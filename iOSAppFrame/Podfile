@@ -1,0 +1,18 @@
+platform :ios,’8.0’
+
+
+target ‘iOSAppFrame’ do
+
+	pod 'FMDB'
+	pod 'SDWebImage'
+	pod 'IQKeyboardManager'
+	pod 'MJRefresh'
+	pod 'MJExtension'
+	pod 'AFNetworking'
+	pod 'Masonry'
+
+	#pod 'BEMCheckBox'
+	#pod 'UAProgressView'
+	#pod 'LGSideMenuController' 
+
+end

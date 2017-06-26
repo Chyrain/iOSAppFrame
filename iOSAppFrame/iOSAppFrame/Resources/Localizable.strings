@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  iOSAppFrame
+
+  Created by chyrain on 2017/6/23.
+  Copyright © 2017年 Chyrain. All rights reserved.
+*/
+"today" = "今天";
+"tomorrow" = "明天";
+"yesterday" = "昨天";
+"beforeyesterday" = "前天";
+"am" = "上午";
+"pm" = "下午";
+"night" = "晚上";
+"dawn" = "凌晨";
+"sun" = "星期日";
+"mon" = "星期一";
+"tues" = "星期二";
+"wed" = "星期三";
+"thurs" = "星期四";
+"fri" = "星期五";
+"sat" = "星期六";
+"yyyy-MM-dd" = "yyyy年MM月dd日";
+
+"Host" = "首页";
+"Attention" = "关注";
+"Find" = "发现";
+"GoodsCar" = "购物车";
+"MineCenter" = "我";
