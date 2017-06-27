@@ -7,8 +7,11 @@
 //
 
 #import "AttentionViewController.h"
+#import "XLWaveProgress.h"
 
-@interface AttentionViewController ()
+@interface AttentionViewController () {
+    XLWaveProgress *_waveProgress;
+}
 
 @end
 
@@ -18,6 +21,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = LocalStr(@"Attention", @"关注");
+    
+    _waveProgress = [[XLWaveProgress alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    _waveProgress.center = self.view.center;
+    _waveProgress.fontSize = 20;
+    [self.view addSubview:_waveProgress];
+    _waveProgress.progress = 0.0f;
+    
+    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(_waveProgress.frame) + 20, self.view.bounds.size.width - 2*50, 20)];
+    [slider addTarget:self action:@selector(sliderMethod:) forControlEvents:UIControlEventValueChanged];
+    [slider setMaximumValue:1];
+    [slider setMinimumValue:0];
+    [slider setMinimumTrackTintColor:[UIColor colorWithRed:96/255.0f green:159/255.0f blue:150/255.0f alpha:1]];
+    [self.view addSubview:slider];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,14 +41,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)sliderMethod:(UISlider*)slider {
+    _waveProgress.progress = slider.value;
 }
-*/
 
 @end

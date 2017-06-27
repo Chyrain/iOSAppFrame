@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		208D2EF187EE1F2BEB034A74 /* libPods-iOSAppFrame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A40F6E375C08BE7C14326883 /* libPods-iOSAppFrame.a */; };
+		5910960B1F02460A00958937 /* UIViewController+XLBubbleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096081F02460A00958937 /* UIViewController+XLBubbleTransition.m */; };
+		5910960C1F02460A00958937 /* XLBubbleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910960A1F02460A00958937 /* XLBubbleTransition.m */; };
+		591096121F0259EC00958937 /* XLWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910960F1F0259EC00958937 /* XLWave.m */; };
+		591096131F0259EC00958937 /* XLWaveProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096111F0259EC00958937 /* XLWaveProgress.m */; };
 		596DA2411EFCA3AC00829617 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2401EFCA3AC00829617 /* main.m */; };
 		596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2431EFCA3AC00829617 /* AppDelegate.m */; };
 		596DA2471EFCA3AC00829617 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2461EFCA3AC00829617 /* ViewController.m */; };
@@ -65,6 +69,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		591096071F02460A00958937 /* UIViewController+XLBubbleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XLBubbleTransition.h"; sourceTree = "<group>"; };
+		591096081F02460A00958937 /* UIViewController+XLBubbleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XLBubbleTransition.m"; sourceTree = "<group>"; };
+		591096091F02460A00958937 /* XLBubbleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLBubbleTransition.h; sourceTree = "<group>"; };
+		5910960A1F02460A00958937 /* XLBubbleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLBubbleTransition.m; sourceTree = "<group>"; };
+		5910960E1F0259EC00958937 /* XLWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLWave.h; sourceTree = "<group>"; };
+		5910960F1F0259EC00958937 /* XLWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLWave.m; sourceTree = "<group>"; };
+		591096101F0259EC00958937 /* XLWaveProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLWaveProgress.h; sourceTree = "<group>"; };
+		591096111F0259EC00958937 /* XLWaveProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLWaveProgress.m; sourceTree = "<group>"; };
 		596DA23C1EFCA3AC00829617 /* iOSAppFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596DA2401EFCA3AC00829617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596DA2421EFCA3AC00829617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -167,6 +179,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		591096061F02460A00958937 /* XLBubbleTransition */ = {
+			isa = PBXGroup;
+			children = (
+				591096071F02460A00958937 /* UIViewController+XLBubbleTransition.h */,
+				591096081F02460A00958937 /* UIViewController+XLBubbleTransition.m */,
+				591096091F02460A00958937 /* XLBubbleTransition.h */,
+				5910960A1F02460A00958937 /* XLBubbleTransition.m */,
+			);
+			path = XLBubbleTransition;
+			sourceTree = "<group>";
+		};
+		5910960D1F0259EC00958937 /* XLWaveProgress */ = {
+			isa = PBXGroup;
+			children = (
+				5910960E1F0259EC00958937 /* XLWave.h */,
+				5910960F1F0259EC00958937 /* XLWave.m */,
+				591096101F0259EC00958937 /* XLWaveProgress.h */,
+				591096111F0259EC00958937 /* XLWaveProgress.m */,
+			);
+			path = XLWaveProgress;
+			sourceTree = "<group>";
+		};
 		596DA2331EFCA3AC00829617 = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +352,8 @@
 		596DA27A1EFCB2C200829617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5910960D1F0259EC00958937 /* XLWaveProgress */,
+				591096061F02460A00958937 /* XLBubbleTransition */,
 				596DA2891EFCC0E200829617 /* AlertController */,
 				596DA2971EFCCF8100829617 /* ProgressView */,
 			);
@@ -653,10 +689,14 @@
 				596DA2A01EFCD4AD00829617 /* UITableView+Scroll.m in Sources */,
 				596DA2D11EFD112900829617 /* FindViewController.m in Sources */,
 				596DA2471EFCA3AC00829617 /* ViewController.m in Sources */,
+				5910960B1F02460A00958937 /* UIViewController+XLBubbleTransition.m in Sources */,
 				596DA2B41EFCFCE400829617 /* RootTabBarController.m in Sources */,
 				596DA2A91EFCD79E00829617 /* NSDate+Utils.m in Sources */,
+				5910960C1F02460A00958937 /* XLBubbleTransition.m in Sources */,
+				591096131F0259EC00958937 /* XLWaveProgress.m in Sources */,
 				596DA27E1EFCB3E200829617 /* BaseViewController.m in Sources */,
 				596DA2C31EFD080C00829617 /* TabNavigationController.m in Sources */,
+				591096121F0259EC00958937 /* XLWave.m in Sources */,
 				59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */,
 				596DA29A1EFCCF8100829617 /* MBProgressHUD.m in Sources */,
 				596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */,

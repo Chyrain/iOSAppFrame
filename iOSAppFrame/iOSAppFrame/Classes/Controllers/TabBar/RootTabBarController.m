@@ -7,7 +7,9 @@
 //
 
 #import "RootTabBarController.h"
+#import "FindViewController.h"
 #import "Macros.h"
+#import "XLBubbleTransition.h"
 
 @interface RootTabBarController ()<UITabBarControllerDelegate>
 
@@ -19,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.delegate = self;
     [self initCutomBar];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:ImageWithName(@"tapbar_top_line")]; // tab_background
@@ -59,16 +62,18 @@
 #pragma mark: 发现storyboard: Tab2_Find
     UIStoryboard *findSB = [UIStoryboard storyboardWithName:@"Tab2_Find" bundle:nil];
     UINavigationController *findNaviVC = [findSB instantiateViewControllerWithIdentifier:@"findNavigationC"];
-    [self setChildViewController:findNaviVC selectedImage:nil unSelectedImage:nil title:nil]; //LocalStr(@"Find", @"发现")
-    attentionNaviVC.tabBarItem.tag = 2;
-    [self addCenterButton:ImageWithName(@"findUnSelect.png")
-            selectedImage:ImageWithName(@"findSelect.png")];
+    [self setChildViewController:findNaviVC selectedImage:nil unSelectedImage:nil title:LocalStr(@"Find", @"发现")]; //LocalStr(@"Find", @"发现")
+    findNaviVC.tabBarItem.tag = 2;
+    findNaviVC.tabBarItem.enabled = NO;
+    [self addCenterButton:ImageWithName(@"findSelect.png")
+            selectedImage:ImageWithName(@"findUnSelect.png")];
+//    [self addCenterButton:ImageWithName(@"Menu_icn.png")
+//            selectedImage:ImageWithName(@"Close_icn.png")];
     
 #pragma mark: 购物车storyboard: Tab3_GoodsCar
     UIStoryboard *goodsCarSB = [UIStoryboard storyboardWithName:@"Tab3_GoodsCar" bundle:nil];
     UINavigationController *goodsCarNaviVC = [goodsCarSB instantiateViewControllerWithIdentifier:@"goodsCarNavigationC"];
     [self setChildViewController:goodsCarNaviVC selectedImage:@"goodsCarSelect.png" unSelectedImage:@"goodsCarUnSelect.png" title:LocalStr(@"GoodsCar", @"购物车")];
-    
     goodsCarNaviVC.tabBarItem.tag = 3;
     
 #pragma mark: 个人中心storyboard: Tab4_MineCenter
@@ -101,6 +106,17 @@
 }
 
 #pragma mark - tabbar的代理方法，
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    CATransition *animation = [CATransition animation]; //创建CATransition对象
+    animation.duration = 0.35f;  //设置运动时间
+//    animation.type = @"pageUnCurl"; //设置运动type
+    animation.type = kCATransitionFade;
+    animation.subtype = kCATransitionFromBottom; //设置子类
+    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut; //设置运动速度
+    [self.view.layer addAnimation:animation forKey:@"animation"];
+}
+
 #pragma mark: 每次单击item的时候，如果需要切换则返回yes，否则no
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     return YES;
@@ -118,22 +134,37 @@
     [_centerBtn addTarget:self action:@selector(centerBtn:) forControlEvents:UIControlEventTouchUpInside];
     _centerBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     
-    _centerBtn.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height); //  设定button大小为适应图片
+    _centerBtn.frame = CGRectMake(0, 0, 60, 60); //  设定button大小为适应图片
     [_centerBtn setImage:buttonImage forState:UIControlStateNormal];
     [_centerBtn setImage:selectedImage forState:UIControlStateSelected];
-    
+    //_centerBtn.layer.cornerRadius = 30.0f;
+    //_centerBtn.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
     _centerBtn.adjustsImageWhenHighlighted = NO;
     CGPoint center = self.tabBar.center;
-    center.y = center.y - buttonImage.size.height/5;
+    center.y = center.y - buttonImage.size.height/4;
     _centerBtn.center = center;
     [self.view addSubview:_centerBtn];
 }
 
 - (void)centerBtn:(UIButton *)sender {
-    [self setSelectedIndex:2];
-    sender.selected = YES;
+//    [self setSelectedIndex:2];
+//    sender.selected = YES;
+//    
+//    //触发tabBar:didSelectItem:
+//    if (self.tabBar.delegate) {
+//        [self.tabBar.delegate tabBar:self.tabBar didSelectItem:self.tabBar.selectedItem];
+//    }
+    
+    //present新页面
+    UINavigationController *vc = (UINavigationController *)self.viewControllers[2];
+    //在ViewControllerA中添加push和pop的动画
+    vc.xl_pushTranstion = [XLBubbleTransition transitionWithAnchorRect:sender.frame];
+    vc.xl_popTranstion = [XLBubbleTransition transitionWithAnchorRect:sender.frame];
+    FindViewController *findVC = [[FindViewController alloc] init];
+    [self presentViewController:findVC animated:true completion:nil];
 }
 
+#pragma mark -
 // KVO tabbar hidden
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([object isEqual:self.tabBar] && [keyPath isEqualToString:@"hidden"]) {
