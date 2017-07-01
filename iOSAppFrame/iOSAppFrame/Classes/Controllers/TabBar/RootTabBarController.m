@@ -8,6 +8,7 @@
 
 #import "RootTabBarController.h"
 #import "FindViewController.h"
+#import "TabNavigationController.h"
 #import "Macros.h"
 #import "XLBubbleTransition.h"
 
@@ -29,7 +30,7 @@
     // 设置tabbar背景颜色
     [[UITabBar appearance] setBackgroundColor:[UIColor whiteColor]]; // 设置tabbar背景颜色
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];    // 设置tabbar背景颜色
-    [[UITabBar appearance] setTintColor:UIColorFromRGB(0xe9a658)];   // 选中状态时候的字体颜色及背景
+    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];   // 选中状态时候的字体颜色及背景UIColorFromRGB(0xe9a658)
     // 如果需要自定义图片就需要设置以下几行
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0x252729)} forState:UIControlStateNormal]; // UITabBarItem未选中状态的颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0xe9a658)} forState:UIControlStateSelected]; // UITabBarItem选中状态的颜色
@@ -43,25 +44,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    @try {
+        [self.tabBar removeObserver:self forKeyPath:@"hidden" context:nil]; // remove Observer
+    }
+    @catch (NSException * __unused exception) {}
+}
+
 - (void)initCutomBar
 {
     self.delegate = self;
     
 #pragma mark: 首页storyboard: Tab0_Host
     UIStoryboard *hostSB = [UIStoryboard storyboardWithName:@"Tab0_Host" bundle:nil];
-    UINavigationController *hostNaviVC = [hostSB instantiateViewControllerWithIdentifier:@"hostNavigationC"];
+    TabNavigationController *hostNaviVC = [hostSB instantiateViewControllerWithIdentifier:@"hostNavigationC"];
     [self setChildViewController:hostNaviVC selectedImage:@"hostViewSelect.png" unSelectedImage:@"hostViewUnSelect.png" title:LocalStr(@"Host", @"首页")];
     hostNaviVC.tabBarItem.tag = 0;
     
 #pragma mark: 关注storyboard: Tab1_Attention
     UIStoryboard *attentionSB = [UIStoryboard storyboardWithName:@"Tab1_Attention" bundle:nil];
-    UINavigationController *attentionNaviVC = [attentionSB instantiateViewControllerWithIdentifier:@"attentionNavigationC"];
+    TabNavigationController *attentionNaviVC = [attentionSB instantiateViewControllerWithIdentifier:@"attentionNavigationC"];
     [self setChildViewController:attentionNaviVC selectedImage:@"attentionSelect.png" unSelectedImage:@"attentionUnSelect.png" title:LocalStr(@"Attention", @"关注")];
     attentionNaviVC.tabBarItem.tag = 1;
     
 #pragma mark: 发现storyboard: Tab2_Find
     UIStoryboard *findSB = [UIStoryboard storyboardWithName:@"Tab2_Find" bundle:nil];
-    UINavigationController *findNaviVC = [findSB instantiateViewControllerWithIdentifier:@"findNavigationC"];
+    TabNavigationController *findNaviVC = [findSB instantiateViewControllerWithIdentifier:@"findNavigationC"];
     [self setChildViewController:findNaviVC selectedImage:nil unSelectedImage:nil title:LocalStr(@"Find", @"发现")]; //LocalStr(@"Find", @"发现")
     findNaviVC.tabBarItem.tag = 2;
     findNaviVC.tabBarItem.enabled = NO;
@@ -72,13 +80,13 @@
     
 #pragma mark: 购物车storyboard: Tab3_GoodsCar
     UIStoryboard *goodsCarSB = [UIStoryboard storyboardWithName:@"Tab3_GoodsCar" bundle:nil];
-    UINavigationController *goodsCarNaviVC = [goodsCarSB instantiateViewControllerWithIdentifier:@"goodsCarNavigationC"];
+    TabNavigationController *goodsCarNaviVC = [goodsCarSB instantiateViewControllerWithIdentifier:@"goodsCarNavigationC"];
     [self setChildViewController:goodsCarNaviVC selectedImage:@"goodsCarSelect.png" unSelectedImage:@"goodsCarUnSelect.png" title:LocalStr(@"GoodsCar", @"购物车")];
     goodsCarNaviVC.tabBarItem.tag = 3;
     
 #pragma mark: 个人中心storyboard: Tab4_MineCenter
     UIStoryboard *mineCenterSB = [UIStoryboard storyboardWithName:@"Tab4_MineCenter" bundle:nil];
-    UINavigationController *mineCenterNaviVC = [mineCenterSB instantiateViewControllerWithIdentifier:@"mineCenterNavigationC"];
+    TabNavigationController *mineCenterNaviVC = [mineCenterSB instantiateViewControllerWithIdentifier:@"mineCenterNavigationC"];
     [self setChildViewController:mineCenterNaviVC selectedImage:@"mineCenterSelect.png" unSelectedImage:@"mineCenterUnSelect.png" title:LocalStr(@"MineCenter", @"我")];
     mineCenterNaviVC.tabBarItem.tag = 4;
     
@@ -108,13 +116,13 @@
 #pragma mark - tabbar的代理方法，
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    CATransition *animation = [CATransition animation]; //创建CATransition对象
-    animation.duration = 0.35f;  //设置运动时间
-//    animation.type = @"pageUnCurl"; //设置运动type
-    animation.type = kCATransitionFade;
-    animation.subtype = kCATransitionFromBottom; //设置子类
-    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut; //设置运动速度
-    [self.view.layer addAnimation:animation forKey:@"animation"];
+//    CATransition *animation = [CATransition animation]; //创建CATransition对象
+//    animation.duration = 0.35f;  //设置运动时间
+////    animation.type = @"pageUnCurl"; //设置运动type
+//    animation.type = kCATransitionFade;
+//    animation.subtype = kCATransitionFromBottom; //设置子类
+//    animation.timingFunction = UIViewAnimationOptionCurveEaseInOut; //设置运动速度
+//    [self.view.layer addAnimation:animation forKey:@"animation"];
 }
 
 #pragma mark: 每次单击item的时候，如果需要切换则返回yes，否则no
@@ -170,12 +178,12 @@
     if ([object isEqual:self.tabBar] && [keyPath isEqualToString:@"hidden"]) {
         _centerBtn.hidden = self.tabBar.hidden; // synchronization view state
         
-        if ([object isFinished]) {
-            @try {
-                [object removeObserver:self forKeyPath:@"hidden" context:nil]; // remove Observer
-            }
-            @catch (NSException * __unused exception) {}
-        }
+//        if ([object isFinished]) {
+//            @try {
+//                [object removeObserver:self forKeyPath:@"hidden" context:nil]; // remove Observer
+//            }
+//            @catch (NSException * __unused exception) {}
+//        }
     }
 }
 

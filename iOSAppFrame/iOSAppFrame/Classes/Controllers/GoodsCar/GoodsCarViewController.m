@@ -7,9 +7,16 @@
 //
 
 #import "GoodsCarViewController.h"
+#import "XLImageViewer.h"
+#import "ImageCell.h"
+#import "SDImageCache.h"
+#import "UITools.h"
 
-@interface GoodsCarViewController () {
+@interface GoodsCarViewController () <UICollectionViewDelegate,UICollectionViewDataSource>{
     NSInteger show;
+    BOOL isInit;
+    UICollectionView *_collectionView;
+    NSMutableArray *_imageItems;
 }
 
 @end
@@ -19,10 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = LocalStr(@"GoodsCar", @"购物车");
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"动画" style:UIBarButtonItemStylePlain target:self action:@selector(showAnimation:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"动画" style:UIBarButtonItemStylePlain target:self action:@selector(showAnimation:)];
     show = 1;
+    
+    [self buildUI];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,13 +40,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onFirstLayoutSubviews {
+    _collectionView.frame = self.view.bounds;
+    NSLog(@"self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
+}
+
+-(void)buildUI {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearImageCache)];
+    
+    NSInteger ColumnNumber = 3;
+    CGFloat imageMargin = 10.0f;
+    CGFloat itemWidth = (self.view.bounds.size.width - (ColumnNumber + 1)*imageMargin)/ColumnNumber;
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    flowLayout.itemSize = CGSizeMake(itemWidth,itemWidth);
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    _collectionView.showsHorizontalScrollIndicator = false;
+    _collectionView.backgroundColor = [UIColor clearColor];
+//    _collectionView.contentInset = UIEdgeInsetsMake(0, 6, 0, 6);
+    [_collectionView registerClass:[ImageCell class] forCellWithReuseIdentifier:@"ImageCell"];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [self.view addSubview:_collectionView];
+}
+
+#pragma mark - animation
 
 - (void)showAnimation:(id)sender {
     [self animWithTarget:show ? 0 : 1];
     show = show ? 0 : 1;
 }
 
--(void)animWithTarget:(int)target{
+- (void)animWithTarget:(int)target{
     UIView *view = self.view;
     
     // 1，实例化图层
@@ -84,14 +121,67 @@
     [layer addAnimation:anim forKey:nil];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - imageUrls
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSArray*)imageUrls {
+    return @[
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/1.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/2.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/3.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/4.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/5.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/6.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/7.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/8.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/9.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/10.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/11.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/12.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/1.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/2.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/3.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/4.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/5.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/6.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/7.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/8.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/9.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/10.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/11.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/12.png"];
 }
-*/
+
+#pragma mark CollectionViewDelegate&DataSource
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self imageUrls].count;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString* cellId = @"ImageCell";
+    ImageCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    cell.layer.borderWidth = 1.0f;
+    cell.imageUrl = [self imageUrls][indexPath.row];
+    return  cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    //利用XLImageViewer显示网络图片
+    [[XLImageViewer shareInstanse] showNetImages:[self imageUrls] index:indexPath.row fromImageContainer:[collectionView cellForItemAtIndexPath:indexPath]];
+}
+
+-(void)clearImageCache {
+    [UITools showActionSheetWithMessage:@"删除本地图片缓存？" destructiveTitle:@"删除" destructiveBlock:^{
+        [[SDImageCache sharedImageCache] clearMemory];
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+            [_collectionView reloadData];
+        }];
+    } inViewController:self];
+}
+
 
 @end

@@ -11,4 +11,9 @@
 @interface UITableView (Scroll)
 -(void)scrollToBottom;
 -(void)scrollToBottom:(BOOL)animation;
+-(void)scrollToIndex:(NSIndexPath *)index animation:(BOOL)animation;
+-(void)scrollToRow:(NSInteger)row animation:(BOOL)animation;
+
+//去掉tableView多余行
+-(void)clearEmptyCells;
 @end

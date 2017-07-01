@@ -118,6 +118,27 @@
     [vc presentAlertController:alert animated:YES completion:nil];
 }
 
+/**
+ * ActionSheet的使用示例，具体按钮添加可完全自定义
+ */
++ (void)showActionSheetWithMessage:(NSString *)title destructiveTitle:(NSString *)destructiveTitle destructiveBlock:(void (^)(void))destructiveBlock inViewController:(UIViewController *)vc {
+    AlertController *alert = [AlertController alertControllerWithTitle:nil message:title preferredStyle:AlertControllerStyleActionSheet];
+    AlertAction *cancelAction = [AlertAction actionWithTitle:LocalStr(@"cancel", @"取消") style:AlertActionStyleCancel handler:^(AlertAction *action) {
+        // handle cancel button action
+        NSLog(@"cancel button pressed");
+    }];
+    [alert addAction:cancelAction];
+    AlertAction *otherAction = [AlertAction actionWithTitle:destructiveTitle style:AlertActionStyleDestructive handler:^(AlertAction *action) {
+        // handle cancel button action
+        NSLog(@"other button pressed");
+        if (destructiveBlock) {
+            destructiveBlock();
+        }
+    }];
+    [alert addAction:otherAction];
+    [vc presentAlertController:alert animated:YES completion:nil];
+}
+
 #pragma mark -
 
 /**
@@ -251,23 +272,6 @@
     view.layer.mask = maskLayer;
 }
 
-/**
- * 获取纯色图片
- */
-+ (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
 #pragma mark -
 // 关闭键盘
 + (void)closeKeyboard {
@@ -293,6 +297,36 @@
 // 无标题返回按钮
 + (UIBarButtonItem *)navigationBackButtonWithNoTitle {
     return [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+
+#pragma mark - UIImage
+
+/**
+ * 获取纯色图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color {
+    return [self imageWithColor:color size:CGSizeMake(1.0f, 1.0f)];
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
+    //Create a context of the appropriate size
+    UIGraphicsBeginImageContext(size);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    
+    //Build a rect of appropriate size at origin 0,0
+    CGRect fillRect = CGRectMake(0, 0, size.width, size.height);
+    
+    //Set the fill color
+    CGContextSetFillColorWithColor(currentContext, color.CGColor);
+    
+    //Fill the color
+    CGContextFillRect(currentContext, fillRect);
+    
+    //Snap the picture and close the context
+    UIImage *colorImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return colorImage;
 }
 
 @end

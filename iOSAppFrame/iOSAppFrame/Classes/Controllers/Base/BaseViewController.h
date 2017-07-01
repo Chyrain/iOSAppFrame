@@ -28,6 +28,11 @@ typedef void(^PassStr)(NSString *);
 
 #pragma mark - NavigationBar
 
+/**
+ * 首次LayoutView，用于更新子view的frame
+ */
+- (void)onFirstLayoutSubviews;
+
 //- (void)setNavigationBarTitle:(NSString *)title;
 //
 ///**

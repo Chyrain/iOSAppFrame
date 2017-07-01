@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelTitle:(NSString *)cancelbtn otherTitle:(NSString *)otherBtn otherBlock:(void (^)(void))otherBlock inViewController:(UIViewController *)vc;
 // ActionSheet
 + (void)showActionSheetWithCopyTitle:(NSString *)copyTitle copyBlock:(void (^)(void))copyBlock otherTitle:(NSString *)otherTitle otherBlock:(void (^)(void))otherBlock inViewController:(UIViewController *)vc;
++ (void)showActionSheetWithMessage:(NSString *)title destructiveTitle:(NSString *)destructiveTitle destructiveBlock:(void (^)(void))destructiveBlock inViewController:(UIViewController *)vc;
 
 #pragma mark -
 /**
@@ -67,11 +68,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)cornerRadiusForView:(UIView *)view byRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
 
-/**
- * 获取纯色图片
- */
-+ (UIImage *)imageWithColor:(UIColor *)color;
-
 //关闭键盘
 + (void)closeKeyboard;
 
@@ -81,6 +77,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 无标题返回按钮
 + (UIBarButtonItem *)navigationBackButtonWithNoTitle;
+
+#pragma mark - UIImage
+/**
+ * 获取纯色图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
 @end
 

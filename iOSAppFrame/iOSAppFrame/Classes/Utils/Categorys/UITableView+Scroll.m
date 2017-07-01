@@ -27,4 +27,20 @@
     }
 }
 
+-(void)scrollToIndex:(NSIndexPath *)index animation:(BOOL)animation
+{
+    [self scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionTop animated:animation];
+}
+-(void)scrollToRow:(NSInteger)row animation:(BOOL)animation
+{
+    NSIndexPath * index=[NSIndexPath indexPathForRow:row inSection:0];
+    [self scrollToRowAtIndexPath:index atScrollPosition:UITableViewScrollPositionTop animated:animation];
+}
+
+- (void)clearEmptyCells {
+    //去掉tableView多余行
+    [self setTableHeaderView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+}
+
 @end

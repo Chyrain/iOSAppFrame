@@ -8,7 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController () {
+    BOOL hasFirstLayout;
+}
 
 @end
 
@@ -27,6 +29,7 @@
     
     self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
     self.navigationController.navigationBar.barTintColor = NavBarTintColor;
+    self.navigationController.navigationBar.backgroundColor = NAV_BG_COLOR;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,6 +46,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    if (!hasFirstLayout) {
+        hasFirstLayout = YES;
+        [self onFirstLayoutSubviews];
+    }
+}
+
+- (void)onFirstLayoutSubviews {
+    //TODO 子类重写此方法
 }
 
 @end

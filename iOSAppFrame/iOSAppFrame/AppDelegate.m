@@ -19,6 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 导航栏颜色
+    UINavigationBar *navigationBar = [UINavigationBar appearance];
+    navigationBar.barTintColor = NAV_BG_COLOR;
+    navigationBar.backgroundColor = NAV_BG_COLOR;
+    navigationBar.tintColor = NAV_TINT_COLOR;
+    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: NAV_TITLE_COLOR}];
+    navigationBar.barStyle = UIStatusBarStyleLightContent;
+    navigationBar.translucent = YES;
+    
     // 统一修改返回按钮
     UIImage *backImage = ImageWithName(@"navbar_back");
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 25, 0, 0)]

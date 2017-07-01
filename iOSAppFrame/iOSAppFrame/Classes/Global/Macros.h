@@ -11,6 +11,14 @@
 #define Macros_h
 
 //LOG
+// debug时用于输出日志
+#define V5EnabledLog 1
+#if V5EnabledLog
+#define V5Log(s, ...) NSLog(@"<%@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] \
+lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#else
+#define V5Log(s, ...)
+#endif
 //#define V5LogError(frmt, ...)   DDLogError(@"<%@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] \
 //        lastPathComponent], __LINE__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__])
 //#define V5LogWarn(frmt, ...)    DDLogWarn(@"<%@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] \
@@ -68,6 +76,8 @@
 // MainScreen Height&Width
 #define Main_Screen_Height      [[UIScreen mainScreen] bounds].size.height
 #define Main_Screen_Width       [[UIScreen mainScreen] bounds].size.width
+#define ScreenScaleX            ([UIScreen mainScreen].bounds.size.width/320.0)
+#define ScreenScaleY            ([UIScreen mainScreen].bounds.size.height/480.0)
 
 // View 坐标(x,y)和宽高(width,height)
 #define X(v)                    (v).frame.origin.x
@@ -124,6 +134,13 @@
 // 颜色(RGB)
 #define RGBCOLOR(r, g, b)           [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 #define RGBACOLOR(r, g, b, a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+// RGB颜色转换（16进制->10进制）
+#define UIColorFromRGB(rgbValue)\
+                                \
+                                [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+                                                green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+                                                 blue:((float)(rgbValue & 0xFF))/255.0 \
+                                                alpha:1.0]
 
 //number转String
 #define IntTranslateStr(int_str)    [NSString stringWithFormat:@"%d",int_str];
@@ -187,13 +204,6 @@
 /** NSLocalizedStringFromTable宏做的其实就是在当前bundle中查找资源文件名“xxx.strings”(参数:键＋文件名＋注释) */
 #define AppLocalString(x, ...)  NSLocalizedStringFromTable(x, @"someName", nil)
 
-// RGB颜色转换（16进制->10进制）
-#define UIColorFromRGB(rgbValue)\
-                                \
-                                [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-                                                green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-                                                 blue:((float)(rgbValue & 0xFF))/255.0 \
-                                                alpha:1.0]
 
 // 断点Assert
 #define ITTAssert(condition, ...)\

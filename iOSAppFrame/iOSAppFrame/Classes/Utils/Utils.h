@@ -64,5 +64,6 @@
 
 //字符串#ffffff转UIColor
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert;
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert alpha:(CGFloat)alpha;
 
 @end
