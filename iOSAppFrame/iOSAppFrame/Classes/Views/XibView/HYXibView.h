@@ -10,6 +10,6 @@
 
 @interface HYXibView : UIView
 
-@property (nonatomic, weak) IBOutlet UIView *contentView;
+@property (nonatomic, strong) UIView *contentView;
 
 @end

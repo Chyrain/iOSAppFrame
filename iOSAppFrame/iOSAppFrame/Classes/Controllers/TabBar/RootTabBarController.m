@@ -9,10 +9,10 @@
 #import "RootTabBarController.h"
 #import "FindViewController.h"
 #import "TabNavigationController.h"
-#import "Macros.h"
 #import "XLBubbleTransition.h"
+#import "HYTabBar.h"
 
-@interface RootTabBarController ()<UITabBarControllerDelegate>
+@interface RootTabBarController ()<UITabBarControllerDelegate, HYTabBarDelegate>
 
 @property (nonatomic, strong) UIButton *centerBtn;
 @end
@@ -23,7 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.delegate = self;
-    [self initCutomBar];
+    [self initCustomBar];
+    [self loadHYBar];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:ImageWithName(@"tapbar_top_line")]; // tab_background
     
@@ -34,9 +35,6 @@
     // 如果需要自定义图片就需要设置以下几行
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0x252729)} forState:UIControlStateNormal]; // UITabBarItem未选中状态的颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0xe9a658)} forState:UIControlStateSelected]; // UITabBarItem选中状态的颜色
-    
-    // KVO tabbar hidden
-    [self.tabBar addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,13 +43,12 @@
 }
 
 - (void)dealloc {
-    @try {
-        [self.tabBar removeObserver:self forKeyPath:@"hidden" context:nil]; // remove Observer
+    if (_centerBtn) {
+        [_centerBtn removeFromSuperview];
     }
-    @catch (NSException * __unused exception) {}
 }
 
-- (void)initCutomBar
+- (void)initCustomBar
 {
     self.delegate = self;
     
@@ -70,13 +67,10 @@
 #pragma mark: 发现storyboard: Tab2_Find
     UIStoryboard *findSB = [UIStoryboard storyboardWithName:@"Tab2_Find" bundle:nil];
     TabNavigationController *findNaviVC = [findSB instantiateViewControllerWithIdentifier:@"findNavigationC"];
-    [self setChildViewController:findNaviVC selectedImage:nil unSelectedImage:nil title:LocalStr(@"Find", @"发现")]; //LocalStr(@"Find", @"发现")
+    // 不添加TabBarItem的图片改用自定义图片
+    [self setChildViewController:findNaviVC selectedImage:@"findSelect.png" unSelectedImage:@"findSelect.png" title:LocalStr(@"Find", @"发现")]; //LocalStr(@"Find", @"发现")
     findNaviVC.tabBarItem.tag = 2;
     findNaviVC.tabBarItem.enabled = NO;
-    [self addCenterButton:ImageWithName(@"findSelect.png")
-            selectedImage:ImageWithName(@"findUnSelect.png")];
-//    [self addCenterButton:ImageWithName(@"Menu_icn.png")
-//            selectedImage:ImageWithName(@"Close_icn.png")];
     
 #pragma mark: 购物车storyboard: Tab3_GoodsCar
     UIStoryboard *goodsCarSB = [UIStoryboard storyboardWithName:@"Tab3_GoodsCar" bundle:nil];
@@ -91,6 +85,13 @@
     mineCenterNaviVC.tabBarItem.tag = 4;
     
     self.viewControllers = @[hostNaviVC, attentionNaviVC, findNaviVC, goodsCarNaviVC, mineCenterNaviVC];
+}
+
+- (void)loadHYBar {
+    HYTabBar *tabBar = [[HYTabBar alloc] initWithFrame:self.tabBar.frame andTabVC:self];
+    tabBar.hy_delegate = self;
+    //kvc实质是修改了系统的_tabBar
+    [self setValue:tabBar forKeyPath:@"tabBar"];
 }
 
 
@@ -111,6 +112,20 @@
 #endif
 {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - HYTabBar的代理方法
+
+- (void)hy_tabBarCenterBtnClick:(HYTabBar *)tabBar {
+//    [self setSelectedIndex:2];
+    
+    //present新页面
+    UINavigationController *vc = (UINavigationController *)self.viewControllers[2];
+    //在ViewControllerA中添加push和pop的动画
+    vc.xl_pushTranstion = [XLBubbleTransition transitionWithAnchorRect:tabBar.centerBtn.frame];
+    vc.xl_popTranstion = [XLBubbleTransition transitionWithAnchorRect:tabBar.centerBtn.frame];
+    FindViewController *findVC = [[FindViewController alloc] init];
+    [self presentViewController:findVC animated:true completion:nil];
 }
 
 #pragma mark - tabbar的代理方法，
@@ -134,57 +149,6 @@
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     _centerBtn.selected = (self.selectedIndex == 2) ? YES : NO;
     
-}
-
-#pragma mark: Create a custom UIButton
-- (void)addCenterButton:(UIImage*)buttonImage selectedImage:(UIImage*)selectedImage {
-    _centerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_centerBtn addTarget:self action:@selector(centerBtn:) forControlEvents:UIControlEventTouchUpInside];
-    _centerBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-    
-    _centerBtn.frame = CGRectMake(0, 0, 60, 60); //  设定button大小为适应图片
-    [_centerBtn setImage:buttonImage forState:UIControlStateNormal];
-    [_centerBtn setImage:selectedImage forState:UIControlStateSelected];
-    //_centerBtn.layer.cornerRadius = 30.0f;
-    //_centerBtn.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
-    _centerBtn.adjustsImageWhenHighlighted = NO;
-    CGPoint center = self.tabBar.center;
-    center.y = center.y - buttonImage.size.height/4;
-    _centerBtn.center = center;
-    [self.view addSubview:_centerBtn];
-}
-
-- (void)centerBtn:(UIButton *)sender {
-//    [self setSelectedIndex:2];
-//    sender.selected = YES;
-//    
-//    //触发tabBar:didSelectItem:
-//    if (self.tabBar.delegate) {
-//        [self.tabBar.delegate tabBar:self.tabBar didSelectItem:self.tabBar.selectedItem];
-//    }
-    
-    //present新页面
-    UINavigationController *vc = (UINavigationController *)self.viewControllers[2];
-    //在ViewControllerA中添加push和pop的动画
-    vc.xl_pushTranstion = [XLBubbleTransition transitionWithAnchorRect:sender.frame];
-    vc.xl_popTranstion = [XLBubbleTransition transitionWithAnchorRect:sender.frame];
-    FindViewController *findVC = [[FindViewController alloc] init];
-    [self presentViewController:findVC animated:true completion:nil];
-}
-
-#pragma mark -
-// KVO tabbar hidden
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([object isEqual:self.tabBar] && [keyPath isEqualToString:@"hidden"]) {
-        _centerBtn.hidden = self.tabBar.hidden; // synchronization view state
-        
-//        if ([object isFinished]) {
-//            @try {
-//                [object removeObserver:self forKeyPath:@"hidden" context:nil]; // remove Observer
-//            }
-//            @catch (NSException * __unused exception) {}
-//        }
-    }
 }
 
 @end

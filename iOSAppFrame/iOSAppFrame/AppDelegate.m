@@ -22,7 +22,7 @@
     // 导航栏颜色
     UINavigationBar *navigationBar = [UINavigationBar appearance];
     navigationBar.barTintColor = NAV_BG_COLOR;
-    navigationBar.backgroundColor = NAV_BG_COLOR;
+    //navigationBar.backgroundColor = NAV_BG_COLOR; //设置barTintColor而不是backgroundColor
     navigationBar.tintColor = NAV_TINT_COLOR;
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: NAV_TITLE_COLOR}];
     navigationBar.barStyle = UIStatusBarStyleLightContent;
@@ -30,6 +30,7 @@
     
     // 统一修改返回按钮
     UIImage *backImage = ImageWithName(@"navbar_back");
+    backImage = [UIImage imageWithCGImage:backImage.CGImage scale:2.6 orientation:backImage.imageOrientation];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 25, 0, 0)]
                                                       forState:UIControlStateNormal
                                                     barMetrics:UIBarMetricsDefault];

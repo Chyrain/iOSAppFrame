@@ -29,7 +29,7 @@
     
     self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
     self.navigationController.navigationBar.barTintColor = NavBarTintColor;
-    self.navigationController.navigationBar.backgroundColor = NAV_BG_COLOR;
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

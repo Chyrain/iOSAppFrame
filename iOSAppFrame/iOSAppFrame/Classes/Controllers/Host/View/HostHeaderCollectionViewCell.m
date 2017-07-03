@@ -48,8 +48,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.iconView.frame = CGRectMake(20, 20, self.frame.size.width - 40, self.frame.size.height - 40);
-    self.titleLabel.frame = CGRectMake(0, 75, self.frame.size.width, 21);
+    self.iconView.frame = CGRectMake(20, 10, self.frame.size.width - 40, self.frame.size.height - 40);
+    self.titleLabel.frame = CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20);
 }
 
 @end

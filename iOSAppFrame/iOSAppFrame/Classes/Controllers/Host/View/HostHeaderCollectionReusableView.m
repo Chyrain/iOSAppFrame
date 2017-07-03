@@ -11,12 +11,18 @@
 #import "ImageScrollView.h"
 
 //宏定义scrollview的宽高
-#define view_WIDTH self.frame.size.width
-#define view_HEIGHT self.frame.size.height
+#define view_WIDTH self.bounds.size.width
+#define view_HEIGHT self.bounds.size.height
 
 static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
 
-@interface HostHeaderCollectionReusableView()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HostHeaderCollectionReusableView()<UICollectionViewDelegate, UICollectionViewDataSource> {
+    UICollectionView *_collectionView;
+    ImageScrollView *_loopView;
+    
+    CGFloat initialH;
+    CGFloat initialW;
+}
 
 @property (nonatomic, strong) NSMutableArray *buttonIconMutableArray;
 
@@ -51,39 +57,60 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        initialH = view_HEIGHT;
+        initialW = view_WIDTH;
+        
         // 添加图片轮播器
-        CGFloat loopViewH = 200;
-        ImageScrollView *loopView = [[ImageScrollView alloc] initViewWithFrame:CGRectMake(0, 0, view_WIDTH, loopViewH)
+        CGFloat loopViewH = HOST_COLLECTION_HERDER_H - view_WIDTH/2;
+        _loopView = [[ImageScrollView alloc] initViewWithFrame:CGRectMake(0, 0, view_WIDTH, loopViewH)
                                                                   autoPlayTime:5.0
                                                                    imagesArray:[self imageArray]
                                                                  clickCallBack:nil];
-        loopView.clickBlcok = ^(NSInteger index) {
-            if ([self.delegate respondsToSelector:@selector(hostHeaderScrollViewEventDidSelectIndex:)]) {
-                [self.delegate hostHeaderScrollViewEventDidSelectIndex:index];
+        __weak typeof(self) weakSelf = self;
+        _loopView.clickBlcok = ^(NSInteger index) {
+            if ([weakSelf.delegate respondsToSelector:@selector(hostHeaderScrollViewEventDidSelectIndex:)]) {
+                [weakSelf.delegate hostHeaderScrollViewEventDidSelectIndex:index];
             }
         };
-        [self addSubview:loopView];
+        [self addSubview:_loopView];
         
         CGFloat collectionViewY = loopViewH;            // 添加横向滑动的UICollectionView
-        CGFloat collectionViewH = view_WIDTH / 2;
+        CGFloat collectionViewH = view_WIDTH/2;
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        CGFloat itemWH = view_WIDTH / 4;
-        flowLayout.itemSize = CGSizeMake(itemWH, itemWH);
+        CGFloat itemW = view_WIDTH / 4;
+        CGFloat itemH = itemW;//collectionViewH / 2;
+        flowLayout.itemSize = CGSizeMake(itemW, itemH);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal; // 设置滚动方向
         flowLayout.collectionView.pagingEnabled = YES;    // 设置分页
         flowLayout.minimumLineSpacing = 0;                // 设置最小行间距
         flowLayout.minimumInteritemSpacing = 0;           // 设置最小item间距
         
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, collectionViewY, view_WIDTH, collectionViewH) collectionViewLayout:flowLayout];
-        [collectionView registerClass:[HostHeaderCollectionViewCell class] forCellWithReuseIdentifier:hostHeaderCellId];
-        collectionView.backgroundColor = [UIColor whiteColor];
-        collectionView.dataSource = self;
-        collectionView.delegate = self;
-        collectionView.showsHorizontalScrollIndicator = NO;
-        [self addSubview:collectionView];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, collectionViewY, view_WIDTH, collectionViewH) collectionViewLayout:flowLayout];
+        [_collectionView registerClass:[HostHeaderCollectionViewCell class] forCellWithReuseIdentifier:hostHeaderCellId];
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        [self addSubview:_collectionView];
+        
+        self.backgroundColor = [UIColor yellowColor];//////
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    //更新frame
+    //NSLog(@"layoutSubviews frame: %@", NSStringFromCGRect(self.frame));//////
+    CGFloat loopViewH = view_HEIGHT - initialW/2;
+    CGFloat collectionViewY = loopViewH;
+    CGFloat collectionViewH = initialW/2;
+    _loopView.frame = CGRectMake(0, 0, view_WIDTH, loopViewH);
+    
+    CGFloat deltaY = view_HEIGHT - initialH;
+    _collectionView.frame = CGRectMake(0 + deltaY/2, collectionViewY, initialW, collectionViewH);
 }
 
 #pragma mark UICollectionViewDataSource 数据源方法

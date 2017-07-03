@@ -11,11 +11,13 @@
 #import "Masonry.h"
 #import "AnimationsTableViewController.h"
 #import "UIViewController+NIB.h"
+#import "IBDesigbableImageview.h"
 
 static NSString * cellIdentifier = @"hyCellID";
 #define FIND_BG [UIColor orangeColor] //[UIColor colorWithRed:253/255.0 green:216/255.0 blue:97/255.0 alpha:1]
 
 @interface FindViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet IBDesigbableImageview *desigableView;
 @property (nonatomic, strong) UITableView * tableView;
 @property (strong, nonatomic) UIButton *button;
 @end
@@ -43,7 +45,7 @@ static NSString * cellIdentifier = @"hyCellID";
     [self setupConstraintsOfLabel:label];
     
     self.button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    self.button.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMaxY(self.view.frame) - 40);
+    self.button.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMaxY(self.view.frame) - TAB_CENTER_BTN_MARGIN_BOTTOM);
     [self.button setImage:[UIImage imageNamed:@"Add_icn"] forState:UIControlStateNormal];
     [self.button setBackgroundColor:[UIColor whiteColor]];
     self.button.layer.cornerRadius = self.button.bounds.size.width/2.0f;

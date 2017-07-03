@@ -37,6 +37,10 @@
 		591096691F0782D000958937 /* HostHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096681F0782D000958937 /* HostHeaderCollectionViewCell.m */; };
 		5910966C1F078B4B00958937 /* HYCollectionCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910966B1F078B4B00958937 /* HYCollectionCarouselView.m */; };
 		5910966F1F078C8600958937 /* HYCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910966E1F078C8600958937 /* HYCarouselViewCell.m */; };
+		591096721F09EA5900958937 /* HYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096711F09EA5900958937 /* HYTabBar.m */; };
+		591096751F0A1C4700958937 /* IBDesigbableImageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096741F0A1C4700958937 /* IBDesigbableImageview.m */; };
+		591096781F0A1CF000958937 /* UIView+HYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096771F0A1CF000958937 /* UIView+HYExtension.m */; };
+		5910967B1F0A39A100958937 /* HostCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910967A1F0A39A100958937 /* HostCollectionViewFlowLayout.m */; };
 		596DA2411EFCA3AC00829617 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2401EFCA3AC00829617 /* main.m */; };
 		596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2431EFCA3AC00829617 /* AppDelegate.m */; };
 		596DA2471EFCA3AC00829617 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2461EFCA3AC00829617 /* ViewController.m */; };
@@ -153,6 +157,14 @@
 		5910966B1F078B4B00958937 /* HYCollectionCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCollectionCarouselView.m; sourceTree = "<group>"; };
 		5910966D1F078C8600958937 /* HYCarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCarouselViewCell.h; sourceTree = "<group>"; };
 		5910966E1F078C8600958937 /* HYCarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCarouselViewCell.m; sourceTree = "<group>"; };
+		591096701F09EA5900958937 /* HYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTabBar.h; sourceTree = "<group>"; };
+		591096711F09EA5900958937 /* HYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTabBar.m; sourceTree = "<group>"; };
+		591096731F0A1C4700958937 /* IBDesigbableImageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDesigbableImageview.h; sourceTree = "<group>"; };
+		591096741F0A1C4700958937 /* IBDesigbableImageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDesigbableImageview.m; sourceTree = "<group>"; };
+		591096761F0A1CF000958937 /* UIView+HYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYExtension.h"; sourceTree = "<group>"; };
+		591096771F0A1CF000958937 /* UIView+HYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYExtension.m"; sourceTree = "<group>"; };
+		591096791F0A39A100958937 /* HostCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		5910967A1F0A39A100958937 /* HostCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		596DA23C1EFCA3AC00829617 /* iOSAppFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596DA2401EFCA3AC00829617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596DA2421EFCA3AC00829617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -306,6 +318,8 @@
 			children = (
 				5910962C1F034FD900958937 /* CustomBezierView.h */,
 				5910962D1F034FD900958937 /* CustomBezierView.m */,
+				591096731F0A1C4700958937 /* IBDesigbableImageview.h */,
+				591096741F0A1C4700958937 /* IBDesigbableImageview.m */,
 			);
 			path = DIYViews;
 			sourceTree = "<group>";
@@ -356,6 +370,8 @@
 		591096581F07549500958937 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				591096701F09EA5900958937 /* HYTabBar.h */,
+				591096711F09EA5900958937 /* HYTabBar.m */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -369,6 +385,8 @@
 				5910965E1F07732200958937 /* HostHeaderCollectionReusableView.m */,
 				591096671F0782D000958937 /* HostHeaderCollectionViewCell.h */,
 				591096681F0782D000958937 /* HostHeaderCollectionViewCell.m */,
+				591096791F0A39A100958937 /* HostCollectionViewFlowLayout.h */,
+				5910967A1F0A39A100958937 /* HostCollectionViewFlowLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,6 +547,8 @@
 				5910963F1F05FE7100958937 /* NSObject+ObjectDealloc.m */,
 				5910964B1F062D7000958937 /* UIViewController+NIB.h */,
 				5910964C1F062D7000958937 /* UIViewController+NIB.m */,
+				591096761F0A1CF000958937 /* UIView+HYExtension.h */,
+				591096771F0A1CF000958937 /* UIView+HYExtension.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -890,6 +910,7 @@
 				596DA2901EFCC0E200829617 /* AlertController.m in Sources */,
 				5910963D1F05F8AB00958937 /* UIView+ExtendTouchRect.m in Sources */,
 				591096661F07775900958937 /* HYSearchBarView.m in Sources */,
+				591096781F0A1CF000958937 /* UIView+HYExtension.m in Sources */,
 				5910961D1F0265F200958937 /* XLImageLoading.m in Sources */,
 				591096631F07758F00958937 /* HYSearchBar.m in Sources */,
 				5910964D1F062D7000958937 /* UIViewController+NIB.m in Sources */,
@@ -931,14 +952,17 @@
 				596DA2881EFCBDD000829617 /* UITools.m in Sources */,
 				591096441F05FF4700958937 /* AnimationsTableViewController.m in Sources */,
 				591096501F063A4200958937 /* ProgressAnimViewController.m in Sources */,
+				591096751F0A1C4700958937 /* IBDesigbableImageview.m in Sources */,
 				5910965C1F0759A100958937 /* HostCollectionViewCell.m in Sources */,
 				596DA2921EFCC0E200829617 /* UIAlertView+Blocks.m in Sources */,
 				596DA2A61EFCD5DC00829617 /* BaseModule.m in Sources */,
 				596DA2CB1EFD10F300829617 /* HostViewController.m in Sources */,
 				5910966F1F078C8600958937 /* HYCarouselViewCell.m in Sources */,
+				5910967B1F0A39A100958937 /* HostCollectionViewFlowLayout.m in Sources */,
 				591096231F02674400958937 /* ImageCell.m in Sources */,
 				596DA2A31EFCD54300829617 /* NSObject+Dictionary.m in Sources */,
 				596DA2411EFCA3AC00829617 /* main.m in Sources */,
+				591096721F09EA5900958937 /* HYTabBar.m in Sources */,
 				596DA2851EFCBD9600829617 /* UIButton+Color.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

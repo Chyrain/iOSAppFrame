@@ -36,7 +36,7 @@
     //    [navBar setBarTintColor:NaviColor];                                 // 设置导航条背景颜色
     //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //状态栏文字色调
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //状态栏文字色调
 }
 
 - (void)viewDidLoad {

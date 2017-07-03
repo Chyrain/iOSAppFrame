@@ -41,7 +41,7 @@ void objDealloc_Swizzle(Class c, SEL orig, SEL new) {
     return NSStringFromClass([self class]);
 }
 
-- (void)_myDealloc {
+- (void)_myDealloc { // => dealloc
     if (self.shouldLogWhenDealloc) {
         NSLog(@"--- 💀 --- %@ Dealloc!",NSStringFromClass([self class]));
     }

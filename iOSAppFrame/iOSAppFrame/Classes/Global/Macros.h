@@ -106,6 +106,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 
 #define kTopBarHeight           (44.f)
 #define kBottomBarHeight        (49.f)
+#define kStatusAndTopBarHeight  (64.f)
 
 #define kCellDefaultHeight      (44.f)
 

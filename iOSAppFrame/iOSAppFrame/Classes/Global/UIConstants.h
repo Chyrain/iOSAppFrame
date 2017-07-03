@@ -18,5 +18,10 @@
 #define NavTintColor NAV_TINT_COLOR //UIColorFromRGB(0x252729)
 #define NavBarTintColor NAV_BG_COLOR //RGBCOLOR(242.f, 243.f, 245.f)
 
+#define TAB_CENTER_BTN_MARGIN_BOTTOM 40.0f
+
+/* Host */
+#define HOST_COLLECTION_HERDER_H 380.0f
+
 
 #endif /* Constants_h */

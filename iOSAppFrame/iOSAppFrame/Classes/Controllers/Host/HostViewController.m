@@ -9,12 +9,13 @@
 #import "HostViewController.h"
 #import "HostCollectionViewCell.h"
 #import "HostHeaderCollectionReusableView.h"
+#import "HostCollectionViewFlowLayout.h"
 #import "HYSearchBar.h"
 
-#define BannerHeight 160
 //宏定义scrollview的宽高
 #define view_WIDTH self.view.frame.size.width
 #define view_HEIGHT self.view.frame.size.height
+#define view_BG_COLOR RGBCOLOR(232, 232, 232)
 
 static NSString * hostCellIdentifier = @"hyCellID";
 static NSString * hostHeaderIdentifier = @"hyHeaderID";
@@ -34,15 +35,17 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 {
     if (!_collectionView) {
         //自动网格布局
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        HostCollectionViewFlowLayout *flowLayout = [[HostCollectionViewFlowLayout alloc] init];
         CGFloat itemWH = (view_WIDTH - 1) / 2; // 设置item尺寸
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
+        flowLayout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, HOST_COLLECTION_HERDER_H);
         flowLayout.itemSize = CGSizeMake(itemWH, itemWH + 20);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical; // 设置滚动方向
         flowLayout.minimumLineSpacing = 1;        // 设置最小行间距
         flowLayout.minimumInteritemSpacing = 1;   // 设置最小item间距
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -64, view_WIDTH, view_HEIGHT - 49) collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = RGBACOLOR(238, 238, 238, 1);
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -kStatusAndTopBarHeight, view_WIDTH, view_HEIGHT - kBottomBarHeight) collectionViewLayout:flowLayout];
+        _collectionView.backgroundColor = view_BG_COLOR;
         [_collectionView registerClass:[HostCollectionViewCell class] forCellWithReuseIdentifier:hostCellIdentifier]; // 注册cell
         // 注册UICollectionReusableView即headerView（切记要添加headerView一定要先注册）
         [_collectionView registerClass:[HostHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:hostHeaderIdentifier];
@@ -80,7 +83,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //self.navigationItem.title = LocalStr(@"Host", @"首页");
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = view_BG_COLOR;
     [self.navigationController.navigationBar addSubview:self.searchBar];
     
     [self.view addSubview:self.collectionView];
@@ -92,8 +95,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [super viewWillAppear:animated];
     
     //self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
-    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     self.navigationController.navigationBar.translucent = YES;
     
     [UIView animateWithDuration:1.0 animations:^{
@@ -115,10 +117,12 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 #pragma mark - 监听goodsTableView的contentOffset属性值发生改变时回调
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    CGFloat offset = _collectionView.contentOffset.y;
-    CGFloat delta = MAX(0, (offset - 160) / 160*ScreenScaleY + 1.f);
-    self.searchBar.searchBarTextField.backgroundColor = RGBACOLOR(233.f, 233.f, 233.f, MAX(0.6, delta));
-    [self.navigationController.navigationBar setValue:@(MIN(0.9, delta)) forKeyPath:@"backgroundView.alpha"];
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        CGFloat offset = _collectionView.contentOffset.y;
+        CGFloat delta = MAX(0, (offset - 160) / 160*ScreenScaleY + 1.f);
+        self.searchBar.searchBarTextField.backgroundColor = RGBACOLOR(233.f, 233.f, 233.f, MAX(0.6, delta));
+        [self.navigationController.navigationBar setValue:@(MIN(0.8, delta)) forKeyPath:@"backgroundView.alpha"];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -138,7 +142,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 // 辅助cell填充
 - (void)dataForCell:(HostCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *item = [self dataArray][0];
-    cell.iconName = [NSString stringWithFormat:@"picture%ld", indexPath.row%7];
+    cell.iconName = [NSString stringWithFormat:@"picture%ld", indexPath.row%6];
     cell.describe = item[@"describe"];
     cell.currentPrice = item[@"currentPrice"];
     cell.originalPrice = item[@"originalPrice"];
@@ -165,14 +169,15 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 
 
 #pragma mark - UICollectionViewDelegateFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(self.view.bounds.size.width, 380); // 设置headerView的宽高
-}
+// 下拉伸展放大的header不设置headerView的宽高
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+//{
+//    return CGSizeMake(self.view.bounds.size.width, 380); // 设置headerView的宽高
+//}
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(14, 0, 0, 0); //设置collectionView的cell上、左、下、右的间距
+    return UIEdgeInsetsMake(2, 0, 0, 0); //设置collectionView的cell上、左、下、右的间距
 }
 
 

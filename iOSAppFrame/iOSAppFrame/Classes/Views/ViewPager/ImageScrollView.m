@@ -12,6 +12,7 @@
 //宏定义scrollview的宽高
 #define view_WIDTH self.frame.size.width
 #define view_HEIGHT self.frame.size.height
+#define pageControl_HEIGHT 30
 
 @interface ImageScrollView () <UIScrollViewDelegate>
 @end
@@ -25,14 +26,13 @@
     NSArray *_imagesArray;
     //存放3个UIImageView的数组
     NSMutableArray *_imageViews;
-    
 }
 
 #pragma mark - get & set
 
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame) - 30, self.frame.size.width, 30)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame) - pageControl_HEIGHT, self.frame.size.width, pageControl_HEIGHT)];
         _pageControl.numberOfPages = _imagesArray.count;
         _pageControl.currentPage = 0;
         _pageControl.pageIndicatorTintColor = [UIColor colorWithRed:82.0/255.0 green:157.0/255.0 blue:219.0/255.0 alpha:1.0];
@@ -91,6 +91,26 @@
         [_timer invalidate];
         _timer = nil;
     }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    //更新frame（更改frame后view_WIDTH和view_HEIGHT变化）
+    //NSLog(@"layoutSubviews frame: %@", NSStringFromCGRect(self.frame));//////
+    self.scrollView.frame = self.bounds;
+    self.pageControl.frame = CGRectMake(0, CGRectGetMaxY(self.scrollView.frame) - pageControl_HEIGHT, view_WIDTH, pageControl_HEIGHT);
+    if (_imageViews) {
+        for (NSInteger i = 0; i < _imageViews.count; i++) {
+            UIImageView *iv = [_imageViews objectAtIndex:i];
+            if (iv) {
+                //变换frame拉伸头部效果
+                iv.frame = CGRectMake(view_WIDTH * i, 0, view_WIDTH, view_HEIGHT);
+            }
+        }
+    }
+    //更新当前中心ImageView偏移值
+    self.scrollView.contentOffset = CGPointMake(view_WIDTH, 0);
 }
 
 #pragma mark - 初始化scrollview/分页控件/imageview
@@ -208,7 +228,6 @@
 
 //停止定时器
 - (void)stopTimer {
-    
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
