@@ -88,13 +88,14 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, collectionViewY, view_WIDTH, collectionViewH) collectionViewLayout:flowLayout];
         [_collectionView registerClass:[HostHeaderCollectionViewCell class] forCellWithReuseIdentifier:hostHeaderCellId];
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.pagingEnabled = YES;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_collectionView];
         
-        self.backgroundColor = [UIColor yellowColor];//////
+//        self.backgroundColor = [UIColor yellowColor];//////
     }
     return self;
 }
@@ -155,11 +156,39 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.delegate respondsToSelector:@selector(hostHeaderCollectionEventDidSelectIndex:)]) {
         [self.delegate hostHeaderCollectionEventDidSelectIndex:indexPath.item];
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"Header collectionView didHighlightItemAtIndexPath section:%ld row:%ld", (long)indexPath.section, (long)indexPath.row);
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //set color with animation
+    [UIView animateWithDuration:0.1
+                          delay:0
+                        options:(UIViewAnimationOptionAllowUserInteraction)
+                     animations:^{
+                         [cell setBackgroundColor:[UIColor colorWithRed:242/255.0f green:242/255.0f blue:242/255.0f alpha:1]];
+                     }
+                     completion:nil];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"Header collectionView didUnhighlightItemAtIndexPath section:%ld row:%ld", (long)indexPath.section, (long)indexPath.row);
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //set color with animation
+    [UIView animateWithDuration:0.1
+                          delay:0
+                        options:(UIViewAnimationOptionAllowUserInteraction)
+                     animations:^{
+                         [cell setBackgroundColor:[UIColor clearColor]];
+                     }
+                     completion:nil ];
 }
 
 @end

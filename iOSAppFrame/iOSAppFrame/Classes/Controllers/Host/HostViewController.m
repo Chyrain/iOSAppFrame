@@ -11,16 +11,19 @@
 #import "HostHeaderCollectionReusableView.h"
 #import "HostCollectionViewFlowLayout.h"
 #import "HYSearchBar.h"
+#import "HostSearchViewController.h"
 
 //宏定义scrollview的宽高
 #define view_WIDTH self.view.frame.size.width
 #define view_HEIGHT self.view.frame.size.height
 #define view_BG_COLOR RGBCOLOR(232, 232, 232)
+#define searchView_Anim_Duration 0.35
 
 static NSString * hostCellIdentifier = @"hyCellID";
 static NSString * hostHeaderIdentifier = @"hyHeaderID";
 
-@interface HostViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HostHeadCollectionReusableViewDelegete, HYSearchBarDelegate> {
+@interface HostViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HostHeadCollectionReusableViewDelegete, HYSearchBarDelegate, HostSearchViewDelegate> {
+    HostSearchViewController *hotWordSearchViewController;
     
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -34,7 +37,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (UICollectionView *)collectionView
 {
     if (!_collectionView) {
-        //自动网格布局
+        //自动网格布局，HostCollectionViewFlowLayout内部实现拉伸放大效果
         HostCollectionViewFlowLayout *flowLayout = [[HostCollectionViewFlowLayout alloc] init];
         CGFloat itemWH = (view_WIDTH - 1) / 2; // 设置item尺寸
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
@@ -95,11 +98,14 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [super viewWillAppear:animated];
     
     //self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.translucent = YES;
-    
     [UIView animateWithDuration:1.0 animations:^{
+        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.translucent = YES;
         [self.navigationController.navigationBar setValue:@(0.1) forKeyPath:@"backgroundView.alpha"];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self updateNavigationBarAlpha];
+        }
     }];
 }
 
@@ -118,11 +124,15 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"contentOffset"]) {
-        CGFloat offset = _collectionView.contentOffset.y;
-        CGFloat delta = MAX(0, (offset - 160) / 160*ScreenScaleY + 1.f);
-        self.searchBar.searchBarTextField.backgroundColor = RGBACOLOR(233.f, 233.f, 233.f, MAX(0.6, delta));
-        [self.navigationController.navigationBar setValue:@(MIN(0.8, delta)) forKeyPath:@"backgroundView.alpha"];
+        [self updateNavigationBarAlpha];
     }
+}
+
+- (void)updateNavigationBarAlpha {
+    CGFloat offset = _collectionView.contentOffset.y;
+    CGFloat delta = MAX(0, (offset - 160) / 160*ScreenScaleY + 1.f);
+    self.searchBar.searchBarTextField.backgroundColor = RGBACOLOR(233.f, 233.f, 233.f, MAX(0.6, delta));
+    [self.navigationController.navigationBar setValue:@(MIN(0.8, delta)) forKeyPath:@"backgroundView.alpha"];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -167,6 +177,29 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     NSLog(@"Host collectionView didSelectItemAtIndexPath section:%ld row:%ld", (long)indexPath.section, (long)indexPath.row);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //set color with animation
+    [UIView animateWithDuration:0.1
+                          delay:0
+                        options:(UIViewAnimationOptionAllowUserInteraction)
+                     animations:^{
+                         [cell setBackgroundColor:[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1]];
+                     }
+                     completion:nil];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView  didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //set color with animation
+    [UIView animateWithDuration:0.1
+                          delay:0
+                        options:(UIViewAnimationOptionAllowUserInteraction)
+                     animations:^{
+                         [cell setBackgroundColor:[UIColor whiteColor]];
+                     }
+                     completion:nil ];
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 // 下拉伸展放大的header不设置headerView的宽高
@@ -196,6 +229,124 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
  */
 - (void)hostHeaderCollectionEventDidSelectIndex:(NSInteger)indexItem {
     NSLog(@"Host HeaderCollectionView didSelectIndex:%ld", (long)indexItem);
+}
+
+#pragma mark - UISearchBarDelegate 代理方法
+/**
+ * 语音识别回调
+ * @param resultStr 返回语音搜索关键字
+ */
+- (void)hy_onVoiceResult:(NSString *)resultStr {
+    NSLog(@"hy_onVoiceResult:%@", resultStr);
+}
+
+/**
+ * 取消事件
+ */
+- (void)hy_searchBarCancelButtonClicked:(UISearchBar *)searchBar   // called when cancel button pressed
+{
+    NSLog(@"hy_searchBarCancelButtonClicked");
+    if ([searchBar isFirstResponder]) {
+        [searchBar resignFirstResponder];
+    }
+    [self onSearchViewControllerDismiss];
+}
+
+/**
+ * 搜索框中右端事件
+ */
+- (void)hy_searchBarBookmarkButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"hy_searchBarBookmarkButtonClicked");
+}
+
+/**
+ * 搜索事件
+ */
+- (void)hy_searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"hy_searchBarSearchButtonClicked: %@", searchBar.text);
+    //提交搜索
+}
+
+/**
+ * 搜索框内容变化时回调
+ * @param result 输入框内容
+ */
+- (void)hy_searchBarSearchResult:(NSString *) result {
+    NSLog(@"hy_searchBarSearchResult: %@", result);
+    //实时输入值
+}
+
+/**
+ * 激活搜索框
+ * @param searchBar 搜索框
+ * @return 是否激活
+ */
+- (BOOL)hy_searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    NSLog(@"hy_searchBarShouldBeginEditing");
+    [self.searchBar setShowsCancelButton:YES animated:YES];
+    //隐藏TabBar
+    //[self.tabBarController.tabBar setHidden:YES];//////
+    
+    if (!hotWordSearchViewController) {
+        hotWordSearchViewController = [[HostSearchViewController alloc] initWithViewControllerName:@"HostViewController"];
+        hotWordSearchViewController.delegate = self;
+        [self addChildViewController:hotWordSearchViewController];
+        [self.view addSubview:hotWordSearchViewController.view];
+        hotWordSearchViewController.view.frame = self.view.bounds;
+        hotWordSearchViewController.view.alpha = 0;
+        [UIView transitionWithView:self.view
+                          duration:searchView_Anim_Duration
+                           options:UIViewAnimationOptionCurveEaseIn //any animation
+                        animations:^ {
+                            hotWordSearchViewController.view.alpha = 0.96;
+                        }
+                        completion:nil];
+    }
+    //[self.view addSubview:hotWordSearchViewController.view];
+    return YES;
+}
+
+#pragma mark - HostSearchViewDelegate方法,搜索页取消时移除当前视图
+- (void)onSearchViewControllerDismiss
+{
+    NSLog(@"onSearchViewControllerDismiss");
+    [self.searchBar setShowsCancelButton:NO animated:YES];
+    //恢复导航栏颜色样式
+    [UIView animateWithDuration:searchView_Anim_Duration animations:^{
+        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.translucent = YES;
+        hotWordSearchViewController.view.alpha = 0;
+        [self updateNavigationBarAlpha];
+    }];
+    //显示TabBar
+    //[self.tabBarController.tabBar setHidden:NO];
+    
+    for (UIViewController *viewController in self.childViewControllers) {
+        if ([viewController isKindOfClass:[HostSearchViewController class]]) {
+            [viewController willMoveToParentViewController:self];
+            [viewController.view removeFromSuperview];
+            [viewController removeFromParentViewController];
+        }
+    }
+    hotWordSearchViewController.delegate = nil;
+    hotWordSearchViewController = nil;
+}
+
+#pragma mark - 搜索页传过来的keyWord
+- (void)hotWordSearchSelect:(NSString *)hotWordString
+{
+    NSLog(@"hotWordSearchSelect: %@", hotWordString);
+    //提交搜索
+    
+    //[self onSearchViewControllerDismiss];
+    
+    //    NSString *keyWordString = [NSString stringWithFormat:@"keywords=%@&", hotWordString];
+    
+    //    B2CShoppingListViewController *filterProductListViewController = [[B2CShoppingListViewController alloc] initWithChannelIdOrKeyWord:keyWordString];
+    //    filterProductListViewController.hidesBottomBarWhenPushed = YES;
+    //    [self.navigationController pushViewController:filterProductListViewController animated:YES];
+    //    [self setHidesBottomBarWhenPushed:NO];
+    
 }
 
 @end

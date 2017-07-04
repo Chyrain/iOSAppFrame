@@ -120,7 +120,7 @@
 - (void)setCornerRadius:(CGFloat)cornerRadius
 {
     self.layer.cornerRadius = cornerRadius;
-    self.layer.masksToBounds = YES;
+    self.layer.masksToBounds = cornerRadius > 0 ?true:false;;
 }
 
 - (BOOL)isShowOnWindow

@@ -11,6 +11,8 @@
 #import "Macros.h"
 #import "MBProgressHUD.h"
 
+#define DEFAULT_VOID_COLOR [UIColor whiteColor]
+
 @implementation UITools
 
 #pragma mark -Toast
@@ -308,6 +310,9 @@
     return [self imageWithColor:color size:CGSizeMake(1.0f, 1.0f)];
 }
 
+/**
+ * 字体大小
+ */
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     //Create a context of the appropriate size
     UIGraphicsBeginImageContext(size);
@@ -327,6 +332,91 @@
     UIGraphicsEndImageContext();
     
     return colorImage;
+}
+
++ (CGFloat)adjustWithFont:(UIFont *)font WithString:(NSString *)string WithSize:(CGSize)size
+{
+    NSAttributedString *attributedText = [[NSAttributedString alloc]
+                                          initWithString:string
+                                          attributes:@{NSFontAttributeName:font}];
+    CGSize textSize = [attributedText boundingRectWithSize:size
+                                                   options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                   context:nil].size;
+    return textSize.height;
+}
+
++ (CGSize)adjustWithFont:(UIFont*)font WithText:(NSString *)string WithSize:(CGSize)size
+{
+    CGSize actualsize;
+    if([self validateString:string] == NO) {
+        return actualsize = CGSizeZero;
+    } else {
+        NSDictionary * tdic = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName,nil]; // 获取当前文本的属性
+        actualsize =[string boundingRectWithSize:actualsize options:NSStringDrawingUsesLineFragmentOrigin  attributes:tdic context:nil].size;
+        NSAttributedString *attributedText = [[NSAttributedString alloc]
+                                              initWithString:string
+                                              attributes:@{NSFontAttributeName:font}];
+        actualsize = [attributedText boundingRectWithSize:size
+                                                  options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                  context:nil].size;
+        
+    }
+    return actualsize;
+}
+
++ (BOOL)validateString:(NSString *)str
+{
+    if(str.length ==  0 || [str isKindOfClass:[NSNull class]] || str == nil || str == NULL || [str isEqualToString:@"(null)"] || [[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0 || [str isEqualToString:@"null"]) {
+        return NO;
+    }
+    return YES;
+}
+
+//字符串#ffffff转UIColor
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert {
+    return [self colorWithHexString:stringToConvert alpha:1.0];
+}
+
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert alpha:(CGFloat)alpha {
+    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    if ([cString length] < 6)
+        return DEFAULT_VOID_COLOR;
+    if ([cString hasPrefix:@"#"])
+        cString = [cString substringFromIndex:1];
+    if ([cString length] != 6)
+        return DEFAULT_VOID_COLOR;
+    
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:alpha];
+}
+
++ (UIColor *)randomColor {
+    CGFloat hue = (arc4random() % 256 / 256.0);
+    CGFloat saturation = (arc4random() % 128 / 256.0) + 0.5;
+    CGFloat brightness = (arc4random() % 128 / 256.0) + 0.5;
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+    
+    return color;
 }
 
 @end

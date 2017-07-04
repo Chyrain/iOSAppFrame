@@ -14,6 +14,7 @@
 #define NAV_BG_COLOR    [UIColor orangeColor]//导航栏背景
 #define NAV_TITLE_COLOR [UIColor whiteColor] //标题颜色
 #define NAV_TINT_COLOR [UIColor whiteColor] //按钮tint颜色 RGBCOLOR(0x18, 0x81, 0xD3)
+#define TEXT_HIGHLIGHT_COLOR [UIColor orangeColor]
 
 #define NavTintColor NAV_TINT_COLOR //UIColorFromRGB(0x252729)
 #define NavBarTintColor NAV_BG_COLOR //RGBCOLOR(242.f, 243.f, 245.f)

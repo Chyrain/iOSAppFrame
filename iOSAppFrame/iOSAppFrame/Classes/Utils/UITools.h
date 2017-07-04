@@ -85,6 +85,21 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 
+#pragma mark - Color
+//字符串#ffffff转UIColor
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert;
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert alpha:(CGFloat)alpha;
+//随机颜色
++ (UIColor *)randomColor;
+
+#pragma mark -
+/**
+ * 字体size
+ */
++ (CGFloat)adjustWithFont:(UIFont *)font WithString:(NSString *)string WithSize:(CGSize)size;
++ (CGSize)adjustWithFont:(UIFont*)font WithText:(NSString *)string WithSize:(CGSize)size;
+
++ (BOOL)validateString:(NSString *)str;
 @end
 
 NS_ASSUME_NONNULL_END

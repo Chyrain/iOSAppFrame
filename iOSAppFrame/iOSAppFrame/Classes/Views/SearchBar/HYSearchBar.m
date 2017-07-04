@@ -19,14 +19,14 @@
 - (instancetype)initWithFrame:(CGRect)frame withShowCancelBtn:(BOOL)isShowCancelBtn {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setPlaceholder:@"搜索"]; // 搜索框的占位符
+        [self setPlaceholder:LocalStr(@"search", @"搜索")]; // 搜索框的占位符
         [self setShowsBookmarkButton:YES];
         // [self setBarStyle:UIBarStyleDefault]; // 搜索框样式
-        [self setTintColor:[UIColor redColor]]; // 搜索框的颜色，当设置此属性时，barStyle将失效
+        [self setTintColor:NAV_TINT_COLOR]; // 搜索框的颜色，当设置此属性时，barStyle将失效
         
-        // [self setKeyboardType:UIKeyboardTypeEmailAddress];            // 设置键盘样式
-        _isShowCancel = isShowCancelBtn;
-        //        [self setShowsCancelButton:isShowCancelBtn animated:YES];
+        //[self setKeyboardType:UIKeyboardTypeEmailAddress];            // 设置键盘样式
+        _isShowCancel = YES;//isShowCancelBtn;
+        [self setShowsCancelButton:isShowCancelBtn animated:YES];
         
         // 是否提供自动修正功能（这个方法一般都不用的）
         // [self setSpellCheckingType:UITextSpellCheckingTypeYes]; // 设置自动检查的类型
@@ -42,12 +42,13 @@
         for (UIView* subview in [[self.subviews lastObject] subviews]) {
             if ([subview isKindOfClass:[UIButton class]]) {
                 UIButton *cancelBtn = (UIButton*)subview;
+                [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
                 [cancelBtn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
             }
             if ([subview isKindOfClass:[UITextField class]]) {
                 UITextField *textField = (UITextField*)subview;
                 textField.textColor = [UIColor darkTextColor]; //修改输入字体的颜色
-                [textField setBackgroundColor:[Utils colorWithHexString:@"#e5e5e5"]]; // 修改输入框的颜色
+                [textField setBackgroundColor:[UITools colorWithHexString:@"#e5e5e5"]]; // 修改输入框的颜色
                 [textField setValue:SearchBarTextColor forKeyPath:@"_placeholderLabel.textColor"]; //修改placeholder的颜色
                 _searchBarTextField = textField;
             } else if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
@@ -66,17 +67,18 @@
 #pragma mark - UISearchBarDelegate 代理方法
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if (_isShowCancel) {
-        [searchBar setShowsCancelButton:YES animated:YES];
-        for (UIView* subview in [[self.subviews lastObject] subviews]) {
-            if ([subview isKindOfClass:[UIButton class]]) {
-                UIButton *cancelBtn = (UIButton*)subview;
-                [cancelBtn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
-            }
-        }
-    }
+//    if (_isShowCancel) {
+//        [searchBar setShowsCancelButton:YES animated:YES];
+//        for (UIView* subview in [[self.subviews lastObject] subviews]) {
+//            if ([subview isKindOfClass:[UIButton class]]) {
+//                UIButton *cancelBtn = (UIButton*)subview;
+//                [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+//                [cancelBtn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
+//            }
+//        }
+//    }
     
-    NSLog(@"searchText = %@",searchText);
+    //NSLog(@"searchText = %@",searchText);
     if([self.searchBarDelegate respondsToSelector:@selector(hy_searchBarSearchResult:)]) {
         [self.searchBarDelegate hy_searchBarSearchResult:searchText];
     }
@@ -84,20 +86,31 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    if (_isShowCancel) {
-        [searchBar setShowsCancelButton:YES animated:YES];
-        for (UIView* subview in [[self.subviews lastObject] subviews]) {
-            if ([subview isKindOfClass:[UIButton class]]) {
-                UIButton *cancelBtn = (UIButton*)subview;
-                [cancelBtn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
-            }
-        }
-    }
+//    if (_isShowCancel) {
+//        [searchBar setShowsCancelButton:YES animated:YES];
+//        for (UIView* subview in [[self.subviews lastObject] subviews]) {
+//            if ([subview isKindOfClass:[UIButton class]]) {
+//                UIButton *cancelBtn = (UIButton*)subview;
+//                [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+//                [cancelBtn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
+//            }
+//        }
+//    }
     
     if ([self.searchBarDelegate respondsToSelector:@selector(hy_searchBarShouldBeginEditing:)]) {
         return [self.searchBarDelegate hy_searchBarShouldBeginEditing:searchBar];
     }
     return YES;
+}
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar*)searchBar{
+    if (_isShowCancel) {
+        [searchBar setShowsCancelButton:YES animated:YES];
+        
+        UIButton *btn=[searchBar valueForKey:@"_cancelButton"];
+        [btn setTitle:@"取消" forState:UIControlStateNormal];
+        //[btn setTitleColor:SearchBarTextColor forState:UIControlStateNormal];
+    }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar   // called when cancel button pressed
