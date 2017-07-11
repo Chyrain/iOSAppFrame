@@ -32,7 +32,7 @@ static NSString * cellIdentifier = @"hyCellID";
     self.navigationItem.title = LocalStr(@"Find", @"发现");
     self.view.backgroundColor = FIND_BG;
     
-    [self.view addSubview:self.tableView];
+    //[self.view addSubview:self.tableView];
     
     //示例label
     UILabel *label = [[UILabel alloc] init];
@@ -60,6 +60,7 @@ static NSString * cellIdentifier = @"hyCellID";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [UIView animateWithDuration:0.35f animations:^{
         [self.button setTransform:CGAffineTransformMakeRotation(M_PI_4)];
     }];
@@ -70,9 +71,14 @@ static NSString * cellIdentifier = @"hyCellID";
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark - selector
 
 -(void)popMethod:(UIButton *)sender{
+    //旋转X按钮
     [UIView animateWithDuration:0.35f animations:^{
         [sender setTransform:CGAffineTransformMakeRotation(-M_PI_4/2)];
     }];

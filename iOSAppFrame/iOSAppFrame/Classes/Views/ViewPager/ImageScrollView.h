@@ -17,19 +17,21 @@ typedef void (^didClickPagerIndexCallBack) (NSInteger index);
 @property(nonatomic, strong) UIScrollView * scrollView;
 //pageControl
 @property(nonatomic, strong) UIPageControl *pageControl;
+//轮播器图片的切换时间,默认5s
+@property (nonatomic, assign) NSTimeInterval autoPlayTime;
 
 /**
  *  创建轮播器的构造方法
  *
  *  @param frame         轮播器的frame
- *  @param playTime      轮播器图片的切换时间
- *  @param imagesArray   轮播器图片的数据源 [{@"image": @"本地图片路径", @"url": @"网络图片url"}]
- *  @param clickCallBack 点击轮播器imageview回调的block
+ *  @param imageArray   轮播器图片的数据源 [{@"网络图片URL", @"UIImage对象"}]
  *
  *  @return 返回一个轮播器组件
  */
-- (instancetype)initViewWithFrame:(CGRect)frame
-                     autoPlayTime:(NSTimeInterval)playTime
-                      imagesArray:(NSArray *)imagesArray
-                    clickCallBack:(didClickPagerIndexCallBack)clickCallBack;
+- (instancetype)initWithFrame:(CGRect)frame imageArray:(NSArray *)imageArray;
+
+//停止定时器
+- (void)stopTimer;
+//开启定时器
+- (void)startTimer;
 @end

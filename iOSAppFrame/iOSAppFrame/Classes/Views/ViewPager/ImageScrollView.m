@@ -23,7 +23,7 @@
     //定时器
     NSTimer *_timer;
     //存放UIImage对象的数组
-    NSArray *_imagesArray;
+    NSArray *_imageArray;
     //存放3个UIImageView的数组
     NSMutableArray *_imageViews;
 }
@@ -33,7 +33,7 @@
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.scrollView.frame) - pageControl_HEIGHT, self.frame.size.width, pageControl_HEIGHT)];
-        _pageControl.numberOfPages = _imagesArray.count;
+        _pageControl.numberOfPages = _imageArray.count;
         _pageControl.currentPage = 0;
         _pageControl.pageIndicatorTintColor = [UIColor colorWithRed:82.0/255.0 green:157.0/255.0 blue:219.0/255.0 alpha:1.0];
         _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
@@ -67,17 +67,10 @@
     return self;
 }
 
-- (instancetype)initViewWithFrame:(CGRect)frame
-                     autoPlayTime:(NSTimeInterval)playTime
-                      imagesArray:(NSArray *)imagesArray
-                    clickCallBack:(didClickPagerIndexCallBack)clickCallBack
-{
+- (instancetype)initWithFrame:(CGRect)frame imageArray:(NSArray *)imageArray {
     if (self = [self initWithFrame:frame]) {
-        _delayTime = playTime;
-        //要给block赋值,不然点击图片没有反应,block是空的,不会执行block
-        self.clickBlcok = clickCallBack;
-        
-        _imagesArray = imagesArray;
+        _delayTime = 5.0f;
+        _imageArray = imageArray;
         [self creatUI];
         [self startTimer];
     }
@@ -87,10 +80,7 @@
 //控制器销毁的时候移除定时器
 - (void)dealloc
 {
-    if (_timer) {
-        [_timer invalidate];
-        _timer = nil;
-    }
+    [self stopTimer];
 }
 
 - (void)layoutSubviews {
@@ -130,7 +120,7 @@
         
         //3个imageview一开始需要的图片分别对应图片数组的图片索引应该是imageview[0].index-->images.count-1,imageview[1].index-->0,imageview[2].index-->1
         NSInteger index = 0;
-        if (i == 0) index = _imagesArray.count - 1;
+        if (i == 0) index = _imageArray.count - 1;
         if (i == 1) index = 0;
         if (i == 2) index = 1;
         
@@ -160,11 +150,13 @@
 // 给Image设置图片
 - (void)setImageView:(UIImageView *)imageView atIndex:(NSInteger)index
 {
-    NSDictionary *imgDic = _imagesArray[index];
-    if (imgDic[@"image"]) {
-        imageView.image = ImageWithName(imgDic[@"image"]);
-    } else if (imgDic[@"url"]) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imgDic[@"url"]] placeholderImage:[UIImage imageNamed:@"PlaceHolder"]];
+    id item = _imageArray[index];
+    if ([item isKindOfClass:[UIImage class]]) {
+        //image图片
+        imageView.image = item;
+    } else if ([item isKindOfClass:[NSString class]]){
+        //网络图片
+        [imageView sd_setImageWithURL:[NSURL URLWithString:item] placeholderImage:[UIImage imageNamed:@"PlaceHolder"]];
     }
 }
 
@@ -236,10 +228,12 @@
 //开启定时器
 - (void)startTimer
 {
-    NSTimer *timer = [NSTimer timerWithTimeInterval:_delayTime > 0 ?_delayTime:3 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
-    //加入NSRunLoopCommonModes运行模式,这样可以让定时器无论是在默认还是拖拽模式下都可以正常运作
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    _timer = timer;
+    if (!_timer) {
+        NSTimer *timer = [NSTimer timerWithTimeInterval:_delayTime target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+        //加入NSRunLoopCommonModes运行模式,这样可以让定时器无论是在默认还是拖拽模式下都可以正常运作
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        _timer = timer;
+    }
 }
 
 #pragma mark - <UIScrollViewDelegate>

@@ -9,10 +9,13 @@
 #import "HostHeaderCollectionReusableView.h"
 #import "HostHeaderCollectionViewCell.h"
 #import "ImageScrollView.h"
+//#import "HYCollectionCarouselView.h"
 
 //宏定义scrollview的宽高
 #define view_WIDTH self.bounds.size.width
 #define view_HEIGHT self.bounds.size.height
+#define collection_Cell_Height 70 //(view_WIDTH / 4)
+#define collection_Cell_Image_WH 40
 
 static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
 
@@ -33,11 +36,15 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
 #pragma mark - get & set
 
 - (NSArray *)imageArray {
-    //NSArray *imageArray = @[@{@"image":@"pic.png"},@{@"image":@"lunbo2.png"},@{@"image":@"lunbo3.png"},@{@"image":@"pic.png"},@{@"image":@"lunbo2.png"}];
-    NSArray *imageArray = @[@{@"url":@"http://img4.duitang.com/uploads/item/201204/11/20120411162656_eJJiZ.jpeg"},
-                            @{@"url":@"http://img.ycwb.com/news/attachement/jpg/site2/20110226/90fba60155890ed3082500.jpg"},
-                            @{@"url":@"http://imgsrc.baidu.com/forum/pic/item/b03533fa828ba61e78ab1c894134970a314e59cb.jpg"},
-                            @{@"url":@"http://pic27.nipic.com/20130227/7224820_020411089000_2.jpg"}];
+//    NSArray *imageArray = @[ImageWithName(@"pic.png"),
+//                            ImageWithName(@"lunbo2.png"),
+//                            ImageWithName(@"lunbo3.png"),
+//                            ImageWithName(@"pic.png"),
+//                            ImageWithName(@"lunbo2.png")];
+    NSArray *imageArray = @[@"http://img4.duitang.com/uploads/item/201204/11/20120411162656_eJJiZ.jpeg",
+                            @"http://img.ycwb.com/news/attachement/jpg/site2/20110226/90fba60155890ed3082500.jpg",
+                            @"http://imgsrc.baidu.com/forum/pic/item/b03533fa828ba61e78ab1c894134970a314e59cb.jpg",
+                            @"http://pic27.nipic.com/20130227/7224820_020411089000_2.jpg"];
     return imageArray;
 }
 
@@ -61,11 +68,9 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
         initialW = view_WIDTH;
         
         // 添加图片轮播器
-        CGFloat loopViewH = HOST_COLLECTION_HERDER_H - view_WIDTH/2;
-        _loopView = [[ImageScrollView alloc] initViewWithFrame:CGRectMake(0, 0, view_WIDTH, loopViewH)
-                                                                  autoPlayTime:5.0
-                                                                   imagesArray:[self imageArray]
-                                                                 clickCallBack:nil];
+        CGFloat loopViewH = HOST_COLLECTION_HERDER_H - collection_Cell_Height * 2;
+        _loopView = [[ImageScrollView alloc] initWithFrame:CGRectMake(0, 0, view_WIDTH, loopViewH)
+                                                imageArray:[self imageArray]];
         __weak typeof(self) weakSelf = self;
         _loopView.clickBlcok = ^(NSInteger index) {
             if ([weakSelf.delegate respondsToSelector:@selector(hostHeaderScrollViewEventDidSelectIndex:)]) {
@@ -78,8 +83,8 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
         CGFloat collectionViewH = view_WIDTH/2;
         
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        CGFloat itemW = view_WIDTH / 4;
-        CGFloat itemH = itemW;//collectionViewH / 2;
+        CGFloat itemW = view_WIDTH / 5;
+        CGFloat itemH = collection_Cell_Height;//collectionViewH / 2;
         flowLayout.itemSize = CGSizeMake(itemW, itemH);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal; // 设置滚动方向
         flowLayout.collectionView.pagingEnabled = YES;    // 设置分页
@@ -105,13 +110,19 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
     
     //更新frame
     //NSLog(@"layoutSubviews frame: %@", NSStringFromCGRect(self.frame));//////
-    CGFloat loopViewH = view_HEIGHT - initialW/2;
+    CGFloat loopViewH = view_HEIGHT - collection_Cell_Height * 2;
     CGFloat collectionViewY = loopViewH;
-    CGFloat collectionViewH = initialW/2;
+    CGFloat collectionViewH = collection_Cell_Height * 2;
     _loopView.frame = CGRectMake(0, 0, view_WIDTH, loopViewH);
     
     CGFloat deltaY = view_HEIGHT - initialH;
     _collectionView.frame = CGRectMake(0 + deltaY/2, collectionViewY, initialW, collectionViewH);
+    
+    if (deltaY > 0) {
+        [_loopView stopTimer];
+    } else {
+        [_loopView startTimer];
+    }
 }
 
 #pragma mark UICollectionViewDataSource 数据源方法

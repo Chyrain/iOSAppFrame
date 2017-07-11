@@ -50,10 +50,14 @@
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if (self.viewControllers.count > 0) {
+    if (self.viewControllers.count > 0) {// > 1?
         viewController.hidesBottomBarWhenPushed = YES;
     }
     return [super pushViewController:viewController animated:animated];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

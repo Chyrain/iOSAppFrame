@@ -18,9 +18,9 @@ static const int target_key;
 }
 
 - (instancetype)initWithActionBlock:(NVMGestureBlock)block {
-    self = [self init];
+    self = [self initWithTarget:self action:@selector(invoke:)];
     [self addActionBlock:block];
-    [self addTarget:self action:@selector(invoke:)];
+    //[self addTarget:self action:@selector(invoke:)];
     return self;
 }
 
@@ -31,6 +31,7 @@ static const int target_key;
 }
 
 - (void)invoke:(id)sender {
+    NSLog(@"invoke:sender %@", sender);
     NVMGestureBlock block = objc_getAssociatedObject(self, &target_key);
     if (block) {
         block(sender);

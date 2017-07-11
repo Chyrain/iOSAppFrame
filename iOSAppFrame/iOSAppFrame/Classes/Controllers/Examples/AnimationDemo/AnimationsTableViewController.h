@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewController.h"
 #import "UIViewController+NIB.h"
 
-@interface AnimationsTableViewController : UITableViewController
+@interface AnimationsTableViewController : BaseTableViewController
 
 @end

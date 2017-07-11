@@ -334,6 +334,19 @@
     return colorImage;
 }
 
+// 将一个 view 进行截图
++ (UIImage *)snapImageForView:(UIView *)view {
+    UIGraphicsBeginImageContext(view.bounds.size);
+    //UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
+    //UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *aImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return aImage;
+}
+
+#pragma mark - 字体大小
+
 + (CGFloat)adjustWithFont:(UIFont *)font WithString:(NSString *)string WithSize:(CGSize)size
 {
     NSAttributedString *attributedText = [[NSAttributedString alloc]

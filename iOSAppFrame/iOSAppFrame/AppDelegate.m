@@ -25,8 +25,10 @@
     //navigationBar.backgroundColor = NAV_BG_COLOR; //设置barTintColor而不是backgroundColor
     navigationBar.tintColor = NAV_TINT_COLOR;
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: NAV_TITLE_COLOR}];
-    navigationBar.barStyle = UIStatusBarStyleLightContent;
+    navigationBar.barStyle = UIBarStyleDefault;
     navigationBar.translucent = YES;
+    // 状态栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     // 统一修改返回按钮
     UIImage *backImage = ImageWithName(@"navbar_back");
@@ -36,6 +38,7 @@
                                                     barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
     
+    [NSThread sleepForTimeInterval:2.0];//设置启动页面时间
     return YES;
 }
 

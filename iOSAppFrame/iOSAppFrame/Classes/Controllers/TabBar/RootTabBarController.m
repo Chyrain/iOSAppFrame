@@ -48,6 +48,10 @@
     }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)initCustomBar
 {
     self.delegate = self;

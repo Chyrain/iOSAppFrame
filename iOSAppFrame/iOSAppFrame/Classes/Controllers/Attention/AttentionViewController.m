@@ -62,6 +62,8 @@ static NSString * colHeadIdentifier = @"cxHeadID";
     self.navigationItem.title = LocalStr(@"Attention", @"关注");
     self.view.backgroundColor = [UIColor whiteColor];
     
+    //左边
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Labs" style:UIBarButtonItemStylePlain target:self action:@selector(showLabExamplesViewController)];
     //右边
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Animation" style:UIBarButtonItemStylePlain target:self action:@selector(showAnimationViewController)];
     
@@ -85,6 +87,13 @@ static NSString * colHeadIdentifier = @"cxHeadID";
 - (void)showAnimationViewController {
     AnimationsTableViewController *animVC = [AnimationsTableViewController loadFromNib];
     [self.navigationController pushViewController:animVC animated:YES];
+}
+
+- (void)showLabExamplesViewController {
+    UIStoryboard *labSB = [UIStoryboard storyboardWithName:@"Labs" bundle:nil];
+    UINavigationController *labNaviVC = [labSB instantiateViewControllerWithIdentifier:@"labsNC"];
+    
+    [self presentViewController:labNaviVC animated:YES completion:nil];
 }
 
 #pragma mark - dataSource

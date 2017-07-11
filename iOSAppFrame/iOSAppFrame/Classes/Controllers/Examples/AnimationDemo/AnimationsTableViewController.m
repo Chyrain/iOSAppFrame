@@ -10,7 +10,10 @@
 #import "UITableView+Scroll.h"
 #import "UIViewController+NIB.h"
 
+#import "ElasticAnimationViewController.h"
 #import "ProgressAnimViewController.h"
+#import "CuteViewController.h"
+#import "FrameScaleViewController.h"
 
 @interface AnimationsTableViewController ()
 
@@ -37,13 +40,13 @@
 }
 
 - (void)dismissSelf {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [super dismissSelf];
 }
 
 # pragma mark - set & get
 
 - (NSArray *)animsArray {
-    return @[@"UI - 动画1", @"Progress Animation View", @"UI - 动画3", @"UI - 动画4", @"UI - 动画5",
+    return @[@"Elastic Animation View", @"Cute View", @"Progress Animation View", @"Frame Scale", @"UI - 动画5",
              @"UI - 动画6", @"UI - 动画7", @"UI - 动画8", @"UI - 动画9", @"UI - 动画10"];
 }
 
@@ -110,17 +113,23 @@
     // Create the next view controller.
     switch (indexPath.row) {
         case 0: {
-//            <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-//            
-//            // Pass the selected object to the new view controller.
-//            
-//            // Push the view controller.
-//            [self.navigationController pushViewController:detailViewController animated:YES];
+            ElasticAnimationViewController *elasticVC = [[ElasticAnimationViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:elasticVC animated:YES];
         }
             break;
         case 1 : {
+            CuteViewController *cuteVC = [[CuteViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:cuteVC animated:YES];
+        }
+            break;
+        case 2 : {
             ProgressAnimViewController *progressVC = [[ProgressAnimViewController alloc] initWithNibName:nil bundle:nil];
             [self.navigationController pushViewController:progressVC animated:YES];
+        }
+            break;
+        case 3 : {
+            FrameScaleViewController *frameVC = [[FrameScaleViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:frameVC animated:YES];
         }
             break;
             
@@ -130,14 +139,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

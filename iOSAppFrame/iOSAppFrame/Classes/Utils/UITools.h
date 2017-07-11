@@ -84,6 +84,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+// 将一个 view 进行截图
++ (UIImage *)snapImageForView:(UIView *)view;
 
 #pragma mark - Color
 //字符串#ffffff转UIColor

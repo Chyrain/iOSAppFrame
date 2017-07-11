@@ -9,7 +9,6 @@
 #import "HYCarouselViewCell.h"
 
 @interface HYCarouselViewCell()
-@property (nonatomic, weak) UIImageView *iconView;
 @end
 
 @implementation HYCarouselViewCell
@@ -23,12 +22,6 @@
         self.iconView = iconView;
     }
     return self;
-}
-
-- (void)setImageName:(NSString *)imageName
-{
-    _imageName = imageName;
-    self.iconView.image = [UIImage imageNamed:imageName];
 }
 
 - (void)layoutSubviews

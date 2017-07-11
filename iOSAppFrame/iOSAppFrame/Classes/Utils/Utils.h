@@ -62,4 +62,7 @@
 + (void)saveTempWithValue:(NSString *)value forKey:(NSString *)key;
 + (id)readTempValueWithKey:(NSString *)key;
 
+#pragma mark -
++ (NSString *)http2httpsOfurl:(NSString *)url;
+
 @end

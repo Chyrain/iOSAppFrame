@@ -292,4 +292,13 @@
     return [dateFormatter dateFromString:dateString];
 }
 
+#pragma mark - 
+
++ (NSString *)http2httpsOfurl:(NSString *)url {
+    if (AUTO_SSL && url && [url containsString:@"http://"]) {
+        url = [url stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    }
+    return url;
+}
+
 @end

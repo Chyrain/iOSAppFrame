@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HYCarouselViewCell : UICollectionViewCell
-@property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, weak) UIImageView *iconView;
 @end

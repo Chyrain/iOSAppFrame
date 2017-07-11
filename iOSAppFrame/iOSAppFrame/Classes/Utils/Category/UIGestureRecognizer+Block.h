@@ -11,5 +11,6 @@
 typedef void(^NVMGestureBlock)(id UIGestureRecognizer);
 
 @interface UIGestureRecognizer (Block)
-
++ (instancetype)nvm_gestureRecognizerWithActionBlock:(NVMGestureBlock)block;
+- (instancetype)initWithActionBlock:(NVMGestureBlock)Block;
 @end

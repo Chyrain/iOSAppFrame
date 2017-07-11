@@ -20,10 +20,7 @@
 		591096291F033A8000958937 /* V5LoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096261F033A8000958937 /* V5LoadingHUD.m */; };
 		5910962A1F033A8000958937 /* V5LoadingSuccessHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096281F033A8000958937 /* V5LoadingSuccessHUD.m */; };
 		5910962E1F034FD900958937 /* CustomBezierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910962D1F034FD900958937 /* CustomBezierView.m */; };
-		591096441F05FF4700958937 /* AnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096421F05FF4700958937 /* AnimationsTableViewController.m */; };
-		591096451F05FF4700958937 /* AnimationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591096431F05FF4700958937 /* AnimationsTableViewController.xib */; };
 		5910964A1F0603B500958937 /* HYXibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096491F0603B500958937 /* HYXibView.m */; };
-		591096501F063A4200958937 /* ProgressAnimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910964F1F063A4200958937 /* ProgressAnimViewController.m */; };
 		591096541F074CAE00958937 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096531F074CAE00958937 /* ImageScrollView.m */; };
 		5910965C1F0759A100958937 /* HostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910965B1F0759A100958937 /* HostCollectionViewCell.m */; };
 		5910965F1F07732200958937 /* HostHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910965E1F07732200958937 /* HostHeaderCollectionReusableView.m */; };
@@ -51,6 +48,9 @@
 		591096A61F0BF4B400958937 /* UIViewController+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5910969A1F0BF4B400958937 /* UIViewController+NIB.m */; };
 		591096CE1F0BF54700958937 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096CD1F0BF54700958937 /* User.m */; };
 		591096D21F0BF5E600958937 /* User+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096D11F0BF5E600958937 /* User+Extensions.m */; };
+		591096D51F0C7BFC00958937 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096D41F0C7BFC00958937 /* XRCarouselView.m */; };
+		591096E11F0DE97300958937 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096E01F0DE97300958937 /* BaseTableViewController.m */; };
+		591292331F0DFA650041CD23 /* RYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591292321F0DFA650041CD23 /* RYCuteView.m */; };
 		596DA2411EFCA3AC00829617 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2401EFCA3AC00829617 /* main.m */; };
 		596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2431EFCA3AC00829617 /* AppDelegate.m */; };
 		596DA2471EFCA3AC00829617 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2461EFCA3AC00829617 /* ViewController.m */; };
@@ -81,6 +81,19 @@
 		596DA2D11EFD112900829617 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D01EFD112900829617 /* FindViewController.m */; };
 		596DA2D41EFD115A00829617 /* GoodsCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D31EFD115A00829617 /* GoodsCarViewController.m */; };
 		596DA2D71EFD117800829617 /* MineCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D61EFD117800829617 /* MineCenterViewController.m */; };
+		5999181F1F11DC3400AF3991 /* HYKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999181E1F11DC3400AF3991 /* HYKVO.m */; };
+		5999182E1F11E1DB00AF3991 /* AnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918231F11E1DB00AF3991 /* AnimationsTableViewController.m */; };
+		5999182F1F11E1DB00AF3991 /* AnimationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599918241F11E1DB00AF3991 /* AnimationsTableViewController.xib */; };
+		599918301F11E1DB00AF3991 /* CuteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918271F11E1DB00AF3991 /* CuteViewController.m */; };
+		599918311F11E1DB00AF3991 /* ElasticAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918291F11E1DB00AF3991 /* ElasticAnimationViewController.m */; };
+		599918321F11E1DB00AF3991 /* UIView+DegressCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999182B1F11E1DB00AF3991 /* UIView+DegressCenter.m */; };
+		599918331F11E1DB00AF3991 /* ProgressAnimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999182D1F11E1DB00AF3991 /* ProgressAnimViewController.m */; };
+		5999183B1F11E42300AF3991 /* Labs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5999183A1F11E42300AF3991 /* Labs.storyboard */; };
+		5999183E1F11E6BF00AF3991 /* LabExamplesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999183D1F11E6BF00AF3991 /* LabExamplesTableViewController.m */; };
+		599918421F13966B00AF3991 /* FrameScaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918411F13966B00AF3991 /* FrameScaleViewController.m */; };
+		599918461F1454CB00AF3991 /* HYPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918451F1454CB00AF3991 /* HYPhotoView.m */; };
+		599918491F145D9600AF3991 /* HYImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918481F145D9600AF3991 /* HYImageBrowser.m */; };
+		5999184C1F145E5100AF3991 /* HYImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999184B1F145E5100AF3991 /* HYImageLoader.m */; };
 		59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B1546A1EFD2AE100380E05 /* LanguageManager.m */; };
 /* End PBXBuildFile section */
 
@@ -126,13 +139,8 @@
 		591096281F033A8000958937 /* V5LoadingSuccessHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V5LoadingSuccessHUD.m; sourceTree = "<group>"; };
 		5910962C1F034FD900958937 /* CustomBezierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBezierView.h; sourceTree = "<group>"; };
 		5910962D1F034FD900958937 /* CustomBezierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBezierView.m; sourceTree = "<group>"; };
-		591096411F05FF4700958937 /* AnimationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsTableViewController.h; sourceTree = "<group>"; };
-		591096421F05FF4700958937 /* AnimationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationsTableViewController.m; sourceTree = "<group>"; };
-		591096431F05FF4700958937 /* AnimationsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsTableViewController.xib; sourceTree = "<group>"; };
 		591096481F0603B500958937 /* HYXibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYXibView.h; sourceTree = "<group>"; };
 		591096491F0603B500958937 /* HYXibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYXibView.m; sourceTree = "<group>"; };
-		5910964E1F063A4200958937 /* ProgressAnimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressAnimViewController.h; sourceTree = "<group>"; };
-		5910964F1F063A4200958937 /* ProgressAnimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressAnimViewController.m; sourceTree = "<group>"; };
 		591096521F074CAE00958937 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
 		591096531F074CAE00958937 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
 		591096561F07532A00958937 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -189,6 +197,12 @@
 		591096CD1F0BF54700958937 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		591096D01F0BF5E600958937 /* User+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Extensions.h"; sourceTree = "<group>"; };
 		591096D11F0BF5E600958937 /* User+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+Extensions.m"; sourceTree = "<group>"; };
+		591096D31F0C7BFC00958937 /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
+		591096D41F0C7BFC00958937 /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
+		591096DF1F0DE97300958937 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		591096E01F0DE97300958937 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		591292311F0DFA650041CD23 /* RYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYCuteView.h; sourceTree = "<group>"; };
+		591292321F0DFA650041CD23 /* RYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYCuteView.m; sourceTree = "<group>"; };
 		596DA23C1EFCA3AC00829617 /* iOSAppFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596DA2401EFCA3AC00829617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596DA2421EFCA3AC00829617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -244,6 +258,30 @@
 		596DA2D51EFD117800829617 /* MineCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCenterViewController.h; sourceTree = "<group>"; };
 		596DA2D61EFD117800829617 /* MineCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCenterViewController.m; sourceTree = "<group>"; };
 		596DA2D81EFD12A800829617 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5999181D1F11DC3400AF3991 /* HYKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYKVO.h; sourceTree = "<group>"; };
+		5999181E1F11DC3400AF3991 /* HYKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYKVO.m; sourceTree = "<group>"; };
+		599918221F11E1DB00AF3991 /* AnimationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsTableViewController.h; sourceTree = "<group>"; };
+		599918231F11E1DB00AF3991 /* AnimationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationsTableViewController.m; sourceTree = "<group>"; };
+		599918241F11E1DB00AF3991 /* AnimationsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationsTableViewController.xib; sourceTree = "<group>"; };
+		599918261F11E1DB00AF3991 /* CuteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuteViewController.h; sourceTree = "<group>"; };
+		599918271F11E1DB00AF3991 /* CuteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuteViewController.m; sourceTree = "<group>"; };
+		599918281F11E1DB00AF3991 /* ElasticAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElasticAnimationViewController.h; sourceTree = "<group>"; };
+		599918291F11E1DB00AF3991 /* ElasticAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElasticAnimationViewController.m; sourceTree = "<group>"; };
+		5999182A1F11E1DB00AF3991 /* UIView+DegressCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DegressCenter.h"; sourceTree = "<group>"; };
+		5999182B1F11E1DB00AF3991 /* UIView+DegressCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DegressCenter.m"; sourceTree = "<group>"; };
+		5999182C1F11E1DB00AF3991 /* ProgressAnimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressAnimViewController.h; sourceTree = "<group>"; };
+		5999182D1F11E1DB00AF3991 /* ProgressAnimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressAnimViewController.m; sourceTree = "<group>"; };
+		5999183A1F11E42300AF3991 /* Labs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Labs.storyboard; sourceTree = "<group>"; };
+		5999183C1F11E6BF00AF3991 /* LabExamplesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabExamplesTableViewController.h; sourceTree = "<group>"; };
+		5999183D1F11E6BF00AF3991 /* LabExamplesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabExamplesTableViewController.m; sourceTree = "<group>"; };
+		599918401F13966B00AF3991 /* FrameScaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameScaleViewController.h; sourceTree = "<group>"; };
+		599918411F13966B00AF3991 /* FrameScaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameScaleViewController.m; sourceTree = "<group>"; };
+		599918441F1454CB00AF3991 /* HYPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPhotoView.h; sourceTree = "<group>"; };
+		599918451F1454CB00AF3991 /* HYPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPhotoView.m; sourceTree = "<group>"; };
+		599918471F145D9600AF3991 /* HYImageBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageBrowser.h; sourceTree = "<group>"; };
+		599918481F145D9600AF3991 /* HYImageBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageBrowser.m; sourceTree = "<group>"; };
+		5999184A1F145E5100AF3991 /* HYImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageLoader.h; sourceTree = "<group>"; };
+		5999184B1F145E5100AF3991 /* HYImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageLoader.m; sourceTree = "<group>"; };
 		59B154691EFD2AE100380E05 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
 		59B1546A1EFD2AE100380E05 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		5C79F702DBC3C572CE765B7B /* Pods-iOSAppFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSAppFrame/Pods-iOSAppFrame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,18 +374,6 @@
 			path = DIYViews;
 			sourceTree = "<group>";
 		};
-		591096361F04A67900958937 /* AnimationDemo */ = {
-			isa = PBXGroup;
-			children = (
-				591096411F05FF4700958937 /* AnimationsTableViewController.h */,
-				591096421F05FF4700958937 /* AnimationsTableViewController.m */,
-				591096431F05FF4700958937 /* AnimationsTableViewController.xib */,
-				5910964E1F063A4200958937 /* ProgressAnimViewController.h */,
-				5910964F1F063A4200958937 /* ProgressAnimViewController.m */,
-			);
-			path = AnimationDemo;
-			sourceTree = "<group>";
-		};
 		591096471F06039100958937 /* XibView */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +386,8 @@
 		591096511F074BB800958937 /* ViewPager */ = {
 			isa = PBXGroup;
 			children = (
+				591096D31F0C7BFC00958937 /* XRCarouselView.h */,
+				591096D41F0C7BFC00958937 /* XRCarouselView.m */,
 				591096521F074CAE00958937 /* ImageScrollView.h */,
 				591096531F074CAE00958937 /* ImageScrollView.m */,
 				5910966A1F078B4B00958937 /* HYCollectionCarouselView.h */,
@@ -456,6 +484,15 @@
 			path = ModelCategory;
 			sourceTree = "<group>";
 		};
+		591292301F0DFA650041CD23 /* RYCuteView */ = {
+			isa = PBXGroup;
+			children = (
+				591292311F0DFA650041CD23 /* RYCuteView.h */,
+				591292321F0DFA650041CD23 /* RYCuteView.m */,
+			);
+			path = RYCuteView;
+			sourceTree = "<group>";
+		};
 		596DA2331EFCA3AC00829617 = {
 			isa = PBXGroup;
 			children = (
@@ -547,7 +584,7 @@
 				596DA2C51EFD109800829617 /* Find */,
 				596DA2C61EFD109900829617 /* GoodsCar */,
 				596DA2C81EFD109900829617 /* MineCenter */,
-				591096361F04A67900958937 /* AnimationDemo */,
+				599918201F11E1DB00AF3991 /* Examples */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -575,6 +612,10 @@
 				596DA2871EFCBDD000829617 /* UITools.m */,
 				596DA2AD1EFCDC5D00829617 /* UserDefaultsUtils.h */,
 				596DA2AE1EFCDC5D00829617 /* UserDefaultsUtils.m */,
+				5999181D1F11DC3400AF3991 /* HYKVO.h */,
+				5999181E1F11DC3400AF3991 /* HYKVO.m */,
+				5999184A1F145E5100AF3991 /* HYImageLoader.h */,
+				5999184B1F145E5100AF3991 /* HYImageLoader.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -591,6 +632,8 @@
 		596DA27A1EFCB2C200829617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				599918431F14549D00AF3991 /* PhotoView */,
+				591292301F0DFA650041CD23 /* RYCuteView */,
 				591096601F07755D00958937 /* SearchBar */,
 				591096581F07549500958937 /* TabBar */,
 				591096511F074BB800958937 /* ViewPager */,
@@ -611,6 +654,8 @@
 			children = (
 				596DA27C1EFCB3E200829617 /* BaseViewController.h */,
 				596DA27D1EFCB3E200829617 /* BaseViewController.m */,
+				591096DF1F0DE97300958937 /* BaseTableViewController.h */,
+				591096E01F0DE97300958937 /* BaseTableViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -636,6 +681,7 @@
 				596DA2B81EFD05AF00829617 /* Tab2_Find.storyboard */,
 				596DA2B91EFD05AF00829617 /* Tab3_GoodsCar.storyboard */,
 				596DA2BA1EFD05AF00829617 /* Tab4_MineCenter.storyboard */,
+				5999183A1F11E42300AF3991 /* Labs.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -723,6 +769,71 @@
 				596DA2D61EFD117800829617 /* MineCenterViewController.m */,
 			);
 			path = MineCenter;
+			sourceTree = "<group>";
+		};
+		599918201F11E1DB00AF3991 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				599918211F11E1DB00AF3991 /* AnimationDemo */,
+				599918341F11E25D00AF3991 /* LabExamples */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		599918211F11E1DB00AF3991 /* AnimationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				599918251F11E1DB00AF3991 /* CuteViewDemo */,
+				5999183F1F13961800AF3991 /* Transition */,
+				599918221F11E1DB00AF3991 /* AnimationsTableViewController.h */,
+				599918231F11E1DB00AF3991 /* AnimationsTableViewController.m */,
+				599918241F11E1DB00AF3991 /* AnimationsTableViewController.xib */,
+				5999182C1F11E1DB00AF3991 /* ProgressAnimViewController.h */,
+				5999182D1F11E1DB00AF3991 /* ProgressAnimViewController.m */,
+			);
+			path = AnimationDemo;
+			sourceTree = "<group>";
+		};
+		599918251F11E1DB00AF3991 /* CuteViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				599918261F11E1DB00AF3991 /* CuteViewController.h */,
+				599918271F11E1DB00AF3991 /* CuteViewController.m */,
+				599918281F11E1DB00AF3991 /* ElasticAnimationViewController.h */,
+				599918291F11E1DB00AF3991 /* ElasticAnimationViewController.m */,
+				5999182A1F11E1DB00AF3991 /* UIView+DegressCenter.h */,
+				5999182B1F11E1DB00AF3991 /* UIView+DegressCenter.m */,
+			);
+			path = CuteViewDemo;
+			sourceTree = "<group>";
+		};
+		599918341F11E25D00AF3991 /* LabExamples */ = {
+			isa = PBXGroup;
+			children = (
+				5999183C1F11E6BF00AF3991 /* LabExamplesTableViewController.h */,
+				5999183D1F11E6BF00AF3991 /* LabExamplesTableViewController.m */,
+			);
+			path = LabExamples;
+			sourceTree = "<group>";
+		};
+		5999183F1F13961800AF3991 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				599918401F13966B00AF3991 /* FrameScaleViewController.h */,
+				599918411F13966B00AF3991 /* FrameScaleViewController.m */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		599918431F14549D00AF3991 /* PhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				599918441F1454CB00AF3991 /* HYPhotoView.h */,
+				599918451F1454CB00AF3991 /* HYPhotoView.m */,
+				599918471F145D9600AF3991 /* HYImageBrowser.h */,
+				599918481F145D9600AF3991 /* HYImageBrowser.m */,
+			);
+			path = PhotoView;
 			sourceTree = "<group>";
 		};
 		7C77F4C0BF255C238CB406F3 /* Frameworks */ = {
@@ -852,11 +963,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5999183B1F11E42300AF3991 /* Labs.storyboard in Resources */,
 				596DA2BE1EFD05AF00829617 /* Tab3_GoodsCar.storyboard in Resources */,
+				5999182F1F11E1DB00AF3991 /* AnimationsTableViewController.xib in Resources */,
 				596DA24F1EFCA3AC00829617 /* LaunchScreen.storyboard in Resources */,
 				596DA2BB1EFD05AF00829617 /* Tab0_Host.storyboard in Resources */,
 				596DA2AC1EFCD88700829617 /* Localizable.strings in Resources */,
-				591096451F05FF4700958937 /* AnimationsTableViewController.xib in Resources */,
 				596DA2BC1EFD05AF00829617 /* Tab1_Attention.storyboard in Resources */,
 				596DA24C1EFCA3AC00829617 /* Assets.xcassets in Resources */,
 				596DA24A1EFCA3AC00829617 /* Main.storyboard in Resources */,
@@ -940,52 +1052,64 @@
 				5910967E1F0B432700958937 /* HostSearchViewController.m in Sources */,
 				5910969C1F0BF4B400958937 /* NSDate+Utils.m in Sources */,
 				5910961D1F0265F200958937 /* XLImageLoading.m in Sources */,
+				599918331F11E1DB00AF3991 /* ProgressAnimViewController.m in Sources */,
 				591096631F07758F00958937 /* HYSearchBar.m in Sources */,
 				5910961E1F0265F200958937 /* XLImageViewer.m in Sources */,
 				5910962E1F034FD900958937 /* CustomBezierView.m in Sources */,
 				596DA2911EFCC0E200829617 /* UIActionSheet+Blocks.m in Sources */,
 				596DA2D11EFD112900829617 /* FindViewController.m in Sources */,
+				591096D51F0C7BFC00958937 /* XRCarouselView.m in Sources */,
 				591096201F0265F200958937 /* XLImageViewerTooBar.m in Sources */,
 				5910969B1F0BF4B400958937 /* NSBundle+Language.m in Sources */,
 				596DA2471EFCA3AC00829617 /* ViewController.m in Sources */,
 				5910966C1F078B4B00958937 /* HYCollectionCarouselView.m in Sources */,
 				5910960B1F02460A00958937 /* UIViewController+XLBubbleTransition.m in Sources */,
 				5910964A1F0603B500958937 /* HYXibView.m in Sources */,
+				5999182E1F11E1DB00AF3991 /* AnimationsTableViewController.m in Sources */,
 				5910969E1F0BF4B400958937 /* NSObject+Dictionary.m in Sources */,
 				596DA2B41EFCFCE400829617 /* RootTabBarController.m in Sources */,
+				5999183E1F11E6BF00AF3991 /* LabExamplesTableViewController.m in Sources */,
 				591096691F0782D000958937 /* HostHeaderCollectionViewCell.m in Sources */,
 				5910960C1F02460A00958937 /* XLBubbleTransition.m in Sources */,
 				591096131F0259EC00958937 /* XLWaveProgress.m in Sources */,
+				599918421F13966B00AF3991 /* FrameScaleViewController.m in Sources */,
 				591096A51F0BF4B400958937 /* UIView+HYExtension.m in Sources */,
 				596DA27E1EFCB3E200829617 /* BaseViewController.m in Sources */,
 				591096D21F0BF5E600958937 /* User+Extensions.m in Sources */,
 				591096A01F0BF4B400958937 /* UIButton+Color.m in Sources */,
+				5999184C1F145E5100AF3991 /* HYImageLoader.m in Sources */,
+				591096E11F0DE97300958937 /* BaseTableViewController.m in Sources */,
 				591096A31F0BF4B400958937 /* UITableView+Scroll.m in Sources */,
 				596DA2C31EFD080C00829617 /* TabNavigationController.m in Sources */,
 				5910961F1F0265F200958937 /* XLImageViewerItem.m in Sources */,
+				5999181F1F11DC3400AF3991 /* HYKVO.m in Sources */,
 				591096121F0259EC00958937 /* XLWave.m in Sources */,
 				59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */,
 				596DA29A1EFCCF8100829617 /* MBProgressHUD.m in Sources */,
+				599918311F11E1DB00AF3991 /* ElasticAnimationViewController.m in Sources */,
 				596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */,
 				596DA2AF1EFCDC5D00829617 /* UserDefaultsUtils.m in Sources */,
 				591096291F033A8000958937 /* V5LoadingHUD.m in Sources */,
 				591096A61F0BF4B400958937 /* UIViewController+NIB.m in Sources */,
 				596DA2CE1EFD111400829617 /* AttentionViewController.m in Sources */,
 				5910965F1F07732200958937 /* HostHeaderCollectionReusableView.m in Sources */,
+				599918461F1454CB00AF3991 /* HYPhotoView.m in Sources */,
 				591096541F074CAE00958937 /* ImageScrollView.m in Sources */,
 				596DA2D71EFD117800829617 /* MineCenterViewController.m in Sources */,
 				596DA2811EFCB57800829617 /* Utils.m in Sources */,
 				591096811F0B4B7F00958937 /* HostSearchWordsTableViewCell.m in Sources */,
+				599918321F11E1DB00AF3991 /* UIView+DegressCenter.m in Sources */,
 				591096A21F0BF4B400958937 /* UIImage+CornerRadius.m in Sources */,
 				591096CE1F0BF54700958937 /* User.m in Sources */,
+				599918301F11E1DB00AF3991 /* CuteViewController.m in Sources */,
 				5910962A1F033A8000958937 /* V5LoadingSuccessHUD.m in Sources */,
 				596DA2881EFCBDD000829617 /* UITools.m in Sources */,
 				5910969D1F0BF4B400958937 /* NSObject+CRKVO.m in Sources */,
-				591096441F05FF4700958937 /* AnimationsTableViewController.m in Sources */,
-				591096501F063A4200958937 /* ProgressAnimViewController.m in Sources */,
+				591292331F0DFA650041CD23 /* RYCuteView.m in Sources */,
 				591096751F0A1C4700958937 /* IBDesigbableImageview.m in Sources */,
 				5910965C1F0759A100958937 /* HostCollectionViewCell.m in Sources */,
 				596DA2921EFCC0E200829617 /* UIAlertView+Blocks.m in Sources */,
+				599918491F145D9600AF3991 /* HYImageBrowser.m in Sources */,
 				596DA2A61EFCD5DC00829617 /* BaseModule.m in Sources */,
 				596DA2CB1EFD10F300829617 /* HostViewController.m in Sources */,
 				591096A41F0BF4B400958937 /* UIView+ExtendTouchRect.m in Sources */,

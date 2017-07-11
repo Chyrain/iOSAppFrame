@@ -8,6 +8,9 @@
 
 #import "HostHeaderCollectionViewCell.h"
 
+#define collection_Cell_Height 70 //(view_WIDTH / 4)
+#define collection_Cell_Image_WH 40
+
 @interface HostHeaderCollectionViewCell()
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -48,7 +51,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.iconView.frame = CGRectMake(20, 10, self.frame.size.width - 40, self.frame.size.height - 40);
+//    self.iconView.frame = CGRectMake(20, 10, self.frame.size.width - 40, self.frame.size.height - 40);
+//    self.titleLabel.frame = CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20);
+    self.iconView.frame = CGRectMake((self.frame.size.width - collection_Cell_Image_WH)/2, 10, collection_Cell_Image_WH, collection_Cell_Image_WH);
     self.titleLabel.frame = CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20);
 }
 

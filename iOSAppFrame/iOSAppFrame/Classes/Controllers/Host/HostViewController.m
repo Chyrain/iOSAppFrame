@@ -24,7 +24,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 
 @interface HostViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HostHeadCollectionReusableViewDelegete, HYSearchBarDelegate, HostSearchViewDelegate> {
     HostSearchViewController *hotWordSearchViewController;
-    
+    BOOL inited;
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (strong, nonatomic) HYSearchBar *searchBar;
@@ -98,15 +98,18 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [super viewWillAppear:animated];
     
     //self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
-    [UIView animateWithDuration:1.0 animations:^{
-        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.translucent = YES;
-        [self.navigationController.navigationBar setValue:@(0.1) forKeyPath:@"backgroundView.alpha"];
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [self updateNavigationBarAlpha];
-        }
-    }];
+    if (!inited) {
+        inited = YES;
+        [UIView animateWithDuration:1.0 animations:^{
+            self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+            self.navigationController.navigationBar.translucent = YES;
+            [self.navigationController.navigationBar setValue:@(0.1) forKeyPath:@"backgroundView.alpha"];
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self updateNavigationBarAlpha];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -152,7 +155,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 // 辅助cell填充
 - (void)dataForCell:(HostCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *item = [self dataArray][0];
-    cell.iconName = [NSString stringWithFormat:@"picture%ld", indexPath.row%6];
+    cell.iconName = [NSString stringWithFormat:@"picture%zi", indexPath.row%6];
     cell.describe = item[@"describe"];
     cell.currentPrice = item[@"currentPrice"];
     cell.originalPrice = item[@"originalPrice"];

@@ -10,6 +10,8 @@
 #ifndef Macros_h
 #define Macros_h
 
+#define AUTO_SSL 1//自动转http->https
+
 //LOG
 // debug时用于输出日志
 #define V5EnabledLog 1
@@ -47,7 +49,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 // 获取本地化strings文件的字符串,key, val:默认值
 #define LocalStr(key, val) \
     NSLocalizedStringWithDefaultValue(key, @"Localizable", [NSBundle mainBundle], val, nil) 
-//#define IMGFILE(file) file
+#define IMGFILE(file) file
 #define FILEPATH(name, type) [[NSBundle mainBundle] pathForResource:name ofType:type]
 
 
@@ -65,6 +67,12 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 
 /* ****************************************************************************************************************** */
 #pragma mark - Frame (宏 x, y, width, height)
+
+// frame width height
+#define self_VIEW_FRM_WIDTH self.view.frame.size.width
+#define self_VIEW_FRM_HEIGHT self.view.frame.size.height
+#define self_FRM_WIDTH self.frame.size.width
+#define self_FRM_HEIGHT self.frame.size.height
 
 // App Frame
 #define Application_Frame       [[UIScreen mainScreen] applicationFrame]
