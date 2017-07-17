@@ -100,7 +100,7 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
         _collectionView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_collectionView];
         
-//        self.backgroundColor = [UIColor yellowColor];//////
+        self.backgroundColor = [UIColor whiteColor];//////
     }
     return self;
 }
@@ -135,30 +135,21 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
 {
     HostHeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hostHeaderCellId forIndexPath:indexPath];
     cell.imageName = self.buttonIconMutableArray[indexPath.item % (self.buttonIconMutableArray.count - 1)];
-    switch (indexPath.item % 8) {
+    switch (indexPath.item % 5) {
         case 0:
-            cell.title = @"在线客服";
+            cell.title = @"附近";
             break;
         case 1:
-            cell.title = @"场合选择";
+            cell.title = @"接入";
             break;
         case 2:
-            cell.title = @"家装线专卖";
+            cell.title = @"发现";
             break;
         case 3:
-            cell.title = @"快速查询";
+            cell.title = @"分类";
             break;
         case 4:
-            cell.title = @"热门分类";
-            break;
-        case 5:
-            cell.title = @"热门型号";
-            break;
-        case 6:
-            cell.title = @"电缆选购";
-            break;
-        case 7:
-            cell.title = @"电话服务";
+            cell.title = @"热门";
             break;
         default:
             break;

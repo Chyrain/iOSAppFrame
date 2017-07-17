@@ -10,14 +10,12 @@
 
 @interface HostCollectionViewCell()
 
-@property (nonatomic, strong) UIImageView *iconView;
-@property (nonatomic, strong) UILabel *describeLabel;
-@property (nonatomic, strong) UILabel *originalPriceLabel;
-@property (nonatomic, strong) UILabel *currentPriceLabel;
 @property (nonatomic, strong) UIView *line;
 
 @end
 
+const CGFloat iconMargin = 10.0f;
+const CGFloat bottomHeight = 40.0f;
 @implementation HostCollectionViewCell
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -26,6 +24,7 @@
     {
         self.backgroundColor = [UIColor whiteColor];
         UIImageView *iconView = [[UIImageView alloc] init];
+        iconView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:iconView];
         
         UILabel *describeLabel = [[UILabel alloc] init];
@@ -83,9 +82,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat iconViewH = self.frame.size.height - 80;
-    CGFloat labelY = iconViewH + 40;
-    self.iconView.frame = CGRectMake(40, 40, self.frame.size.width - 80, iconViewH);
+    CGFloat iconViewH = self.frame.size.height - bottomHeight;
+    CGFloat labelY = iconViewH;//iconViewH + 40;
+    self.iconView.frame = CGRectMake(iconMargin, iconMargin, self.frame.size.width - 2*iconMargin, iconViewH - 2*iconMargin);
     self.describeLabel.frame = CGRectMake(10, labelY, self.frame.size.width, 21);
     self.currentPriceLabel.frame = CGRectMake(10, labelY + 21, 30, 21);
     self.originalPriceLabel.frame = CGRectMake(45, labelY + 23, 30, 21);

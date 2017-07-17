@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIConstants.h"
+#import "RootTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -27,8 +28,8 @@
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: NAV_TITLE_COLOR}];
     navigationBar.barStyle = UIBarStyleDefault;
     navigationBar.translucent = YES;
-    // 状态栏
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    // 状态栏(改为在BaseVC的preferredStatusBarStyle,支持单个页面自定义)
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     // 统一修改返回按钮
     UIImage *backImage = ImageWithName(@"navbar_back");
@@ -39,6 +40,14 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
     
     [NSThread sleepForTimeInterval:2.0];//设置启动页面时间
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    RootTabBarController *tab = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+    self.window.rootViewController = tab;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -94,6 +94,10 @@
 		599918461F1454CB00AF3991 /* HYPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918451F1454CB00AF3991 /* HYPhotoView.m */; };
 		599918491F145D9600AF3991 /* HYImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918481F145D9600AF3991 /* HYImageBrowser.m */; };
 		5999184C1F145E5100AF3991 /* HYImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999184B1F145E5100AF3991 /* HYImageLoader.m */; };
+		599918501F14889E00AF3991 /* TransitionSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999184E1F14889E00AF3991 /* TransitionSecondViewController.m */; };
+		599918511F14889E00AF3991 /* TransitionSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5999184F1F14889E00AF3991 /* TransitionSecondViewController.xib */; };
+		599918541F14AB0A00AF3991 /* HYTransitionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918531F14AB0A00AF3991 /* HYTransitionTool.m */; };
+		599918571F14C22C00AF3991 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918561F14C22C00AF3991 /* UIViewController+BackButtonHandler.m */; };
 		59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B1546A1EFD2AE100380E05 /* LanguageManager.m */; };
 /* End PBXBuildFile section */
 
@@ -282,6 +286,13 @@
 		599918481F145D9600AF3991 /* HYImageBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageBrowser.m; sourceTree = "<group>"; };
 		5999184A1F145E5100AF3991 /* HYImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYImageLoader.h; sourceTree = "<group>"; };
 		5999184B1F145E5100AF3991 /* HYImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYImageLoader.m; sourceTree = "<group>"; };
+		5999184D1F14889E00AF3991 /* TransitionSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionSecondViewController.h; sourceTree = "<group>"; };
+		5999184E1F14889E00AF3991 /* TransitionSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionSecondViewController.m; sourceTree = "<group>"; };
+		5999184F1F14889E00AF3991 /* TransitionSecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransitionSecondViewController.xib; sourceTree = "<group>"; };
+		599918521F14AB0A00AF3991 /* HYTransitionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTransitionTool.h; sourceTree = "<group>"; };
+		599918531F14AB0A00AF3991 /* HYTransitionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTransitionTool.m; sourceTree = "<group>"; };
+		599918551F14C22C00AF3991 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		599918561F14C22C00AF3991 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		59B154691EFD2AE100380E05 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
 		59B1546A1EFD2AE100380E05 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
 		5C79F702DBC3C572CE765B7B /* Pods-iOSAppFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSAppFrame/Pods-iOSAppFrame.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +482,8 @@
 				591096981F0BF4B400958937 /* UIView+HYExtension.m */,
 				591096991F0BF4B400958937 /* UIViewController+NIB.h */,
 				5910969A1F0BF4B400958937 /* UIViewController+NIB.m */,
+				599918551F14C22C00AF3991 /* UIViewController+BackButtonHandler.h */,
+				599918561F14C22C00AF3991 /* UIViewController+BackButtonHandler.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -821,6 +834,11 @@
 			children = (
 				599918401F13966B00AF3991 /* FrameScaleViewController.h */,
 				599918411F13966B00AF3991 /* FrameScaleViewController.m */,
+				5999184D1F14889E00AF3991 /* TransitionSecondViewController.h */,
+				5999184E1F14889E00AF3991 /* TransitionSecondViewController.m */,
+				5999184F1F14889E00AF3991 /* TransitionSecondViewController.xib */,
+				599918521F14AB0A00AF3991 /* HYTransitionTool.h */,
+				599918531F14AB0A00AF3991 /* HYTransitionTool.m */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -972,6 +990,7 @@
 				596DA2BC1EFD05AF00829617 /* Tab1_Attention.storyboard in Resources */,
 				596DA24C1EFCA3AC00829617 /* Assets.xcassets in Resources */,
 				596DA24A1EFCA3AC00829617 /* Main.storyboard in Resources */,
+				599918511F14889E00AF3991 /* TransitionSecondViewController.xib in Resources */,
 				596DA2BF1EFD05AF00829617 /* Tab4_MineCenter.storyboard in Resources */,
 				596DA2BD1EFD05AF00829617 /* Tab2_Find.storyboard in Resources */,
 			);
@@ -1105,13 +1124,16 @@
 				5910962A1F033A8000958937 /* V5LoadingSuccessHUD.m in Sources */,
 				596DA2881EFCBDD000829617 /* UITools.m in Sources */,
 				5910969D1F0BF4B400958937 /* NSObject+CRKVO.m in Sources */,
+				599918541F14AB0A00AF3991 /* HYTransitionTool.m in Sources */,
 				591292331F0DFA650041CD23 /* RYCuteView.m in Sources */,
 				591096751F0A1C4700958937 /* IBDesigbableImageview.m in Sources */,
 				5910965C1F0759A100958937 /* HostCollectionViewCell.m in Sources */,
+				599918571F14C22C00AF3991 /* UIViewController+BackButtonHandler.m in Sources */,
 				596DA2921EFCC0E200829617 /* UIAlertView+Blocks.m in Sources */,
 				599918491F145D9600AF3991 /* HYImageBrowser.m in Sources */,
 				596DA2A61EFCD5DC00829617 /* BaseModule.m in Sources */,
 				596DA2CB1EFD10F300829617 /* HostViewController.m in Sources */,
+				599918501F14889E00AF3991 /* TransitionSecondViewController.m in Sources */,
 				591096A41F0BF4B400958937 /* UIView+ExtendTouchRect.m in Sources */,
 				5910969F1F0BF4B400958937 /* NSObject+ObjectDealloc.m in Sources */,
 				5910966F1F078C8600958937 /* HYCarouselViewCell.m in Sources */,

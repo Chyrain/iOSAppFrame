@@ -36,7 +36,7 @@
     //    [navBar setBarTintColor:NaviColor];                                 // 设置导航条背景颜色
     //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //状态栏文字色调
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent]; //状态栏文字色调
 }
 
 - (void)viewDidLoad {
@@ -56,8 +56,11 @@
     return [super pushViewController:viewController animated:animated];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+#pragma mark -
+
+//StatusBar的控制权交给顶层VC
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.topViewController;
 }
 
 @end

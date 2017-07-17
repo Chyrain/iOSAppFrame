@@ -48,9 +48,9 @@
     }
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//    return UIStatusBarStyleLightContent;
+//}
 
 - (void)initCustomBar
 {
@@ -153,6 +153,12 @@
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     _centerBtn.selected = (self.selectedIndex == 2) ? YES : NO;
     
+}
+
+#pragma mark -
+
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.selectedViewController;
 }
 
 @end

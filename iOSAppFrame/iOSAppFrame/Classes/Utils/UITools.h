@@ -86,6 +86,29 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 // 将一个 view 进行截图
 + (UIImage *)snapImageForView:(UIView *)view;
+/*!
+ * \~english
+ * Render the view's layer passed in generate an image.
+ * @param view  The view need be shot.
+ * @return      An image for the view of passed in.
+ *
+ * \~chinese
+ * 将传进来的view进行截屏, 并返回截屏后的图片.
+ * @return      An image for the view of passed in.
+ */
++(UIImage *)snapShotWithView:(UIView *)view;
+
+/*!
+ * \~english
+ * Render the view's layer passed in generate an image and, mix a shadow on image left-slide.
+ * @param view  The view need be shot.
+ * @return      An image for the view of passed in after mix a shadow on left-slide.
+ *
+ * \~chinese
+ * 将传进来的view进行截屏, 然后在左侧合成一个阴影, 返回合成后的图片.
+ * @return      An image for the view of passed in.
+ */
++(UIImage *)mixShadowWithView:(UIView *)view;
 
 #pragma mark - Color
 //字符串#ffffff转UIColor

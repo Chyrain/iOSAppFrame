@@ -12,12 +12,18 @@
 #import "HostCollectionViewFlowLayout.h"
 #import "HYSearchBar.h"
 #import "HostSearchViewController.h"
+#import "HYImageLoader.h"
+
+#import "TransitionSecondViewController.h"
+#import "HYTransitionTool.h"
 
 //宏定义scrollview的宽高
 #define view_WIDTH self.view.frame.size.width
 #define view_HEIGHT self.view.frame.size.height
 #define view_BG_COLOR RGBCOLOR(232, 232, 232)
 #define searchView_Anim_Duration 0.35
+
+#define Self_Bar_Tint_Color RGBACOLOR(22, 22, 22, 0.8) //[UIColor blackColor]
 
 static NSString * hostCellIdentifier = @"hyCellID";
 static NSString * hostHeaderIdentifier = @"hyHeaderID";
@@ -28,6 +34,8 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (strong, nonatomic) HYSearchBar *searchBar;
+
+@property (nonatomic, strong) HYTransitionTool *transitionTool;
 @end
 
 @implementation HostViewController
@@ -74,9 +82,44 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (NSArray *)dataArray
 {
     return @[@{@"icon":@"picture%ld",
-               @"describe":@"进口美妆 正品保障",
+               @"describe":@"逗趣漫画 轻松一笑",
                @"currentPrice":@"98",
                @"originalPrice":@"128"}];
+}
+
+- (NSArray*)imageUrls {
+    return @[
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/1.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/2.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/3.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/4.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/5.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/6.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/7.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/8.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/9.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/10.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/11.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/12.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/1.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/2.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/3.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/4.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/5.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/6.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/7.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/8.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/9.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/10.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/11.png",
+             @"https://raw.githubusercontent.com/mengxianliang/XLImageViewer/master/Images/12.png"];
+}
+
+- (HYTransitionTool *)transitionTool {
+    if (!_transitionTool) {
+        _transitionTool = [HYTransitionTool new];
+    }
+    return _transitionTool;
 }
 
 #pragma mark - life
@@ -86,7 +129,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //self.navigationItem.title = LocalStr(@"Host", @"首页");
-    self.view.backgroundColor = view_BG_COLOR;
+    self.view.backgroundColor = [UIColor whiteColor]; //view_BG_COLOR;
     [self.navigationController.navigationBar addSubview:self.searchBar];
     
     [self.view addSubview:self.collectionView];
@@ -96,23 +139,31 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBar.barTintColor = Self_Bar_Tint_Color;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     //self.navigationController.navigationBar.tintColor = NavTintColor; // 字体颜色
     if (!inited) {
         inited = YES;
-        [UIView animateWithDuration:1.0 animations:^{
-            self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        self.searchBar.alpha = 0.0;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.navigationController.navigationBar.barTintColor = Self_Bar_Tint_Color;
             self.navigationController.navigationBar.translucent = YES;
-            [self.navigationController.navigationBar setValue:@(0.1) forKeyPath:@"backgroundView.alpha"];
+            //[self.navigationController.navigationBar setValue:@(0.0) forKeyPath:@"backgroundView.alpha"];
+            self.searchBar.alpha = 1.0;
+            [self updateNavigationBarAlpha];
         } completion:^(BOOL finished) {
-            if (finished) {
-                [self updateNavigationBarAlpha];
-            }
         }];
     }
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -148,6 +199,8 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hostCellIdentifier forIndexPath:indexPath];
+    //HYTransition
+    cell.iconView.tag = HYCoverImageViewTag;
     [self dataForCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -155,7 +208,10 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 // 辅助cell填充
 - (void)dataForCell:(HostCollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *item = [self dataArray][0];
-    cell.iconName = [NSString stringWithFormat:@"picture%zi", indexPath.row%6];
+    NSArray *imgs = [self imageUrls];
+    NSString *url = imgs[indexPath.row%imgs.count];
+    [HYImageLoader setImageView:cell.iconView withURL:url];
+    //cell.iconName = [NSString stringWithFormat:@"picture%zi", indexPath.row%6];
     cell.describe = item[@"describe"];
     cell.currentPrice = item[@"currentPrice"];
     cell.originalPrice = item[@"originalPrice"];
@@ -175,9 +231,15 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 }
 
 
-#pragma mark - UICollectionViewDelegate
+#pragma mark - UICollectionViewDelegate 点击高亮
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Host collectionView didSelectItemAtIndexPath section:%ld row:%ld", (long)indexPath.section, (long)indexPath.row);
+    //TODO
+    HostCollectionViewCell *collectionCell = (HostCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    TransitionSecondViewController *frameVC = [TransitionSecondViewController new];
+    frameVC.coverImage = collectionCell.iconView.image;
+    
+    frameVC.closeBlock =  [self.transitionTool begainAnimationWithCollectionViewDidSelectedItemIndexPath:indexPath collcetionView:collectionView forViewController:self presentViewController:frameVC afterPresentedBlock:frameVC.fadeBlock];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -187,7 +249,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
                           delay:0
                         options:(UIViewAnimationOptionAllowUserInteraction)
                      animations:^{
-                         [cell setBackgroundColor:[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1]];
+                         [cell setBackgroundColor:[UIColor colorWithRed:242/255.0f green:242/255.0f blue:242/255.0f alpha:1]];
                      }
                      completion:nil];
 }
@@ -316,7 +378,7 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     [self.searchBar setShowsCancelButton:NO animated:YES];
     //恢复导航栏颜色样式
     [UIView animateWithDuration:searchView_Anim_Duration animations:^{
-        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = Self_Bar_Tint_Color;
         self.navigationController.navigationBar.translucent = YES;
         hotWordSearchViewController.view.alpha = 0;
         [self updateNavigationBarAlpha];

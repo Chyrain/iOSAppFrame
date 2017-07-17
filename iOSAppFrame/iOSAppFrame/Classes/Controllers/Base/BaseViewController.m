@@ -37,6 +37,8 @@
     [super viewWillAppear:animated];
     //[MobClick beginLogPageView:[[self class] description]];
     
+    //更新StatusBar
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

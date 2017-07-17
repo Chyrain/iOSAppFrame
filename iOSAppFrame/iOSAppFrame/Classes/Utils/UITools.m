@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 
 #define DEFAULT_VOID_COLOR [UIColor whiteColor]
+#define shadowWidth 24
 
 @implementation UITools
 
@@ -343,6 +344,28 @@
     UIImage *aImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return aImage;
+}
++(UIImage *)snapShotWithView:(UIView *)view{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *aImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return aImage;
+}
+
++(UIImage *)mixShadowWithView:(UIView *)view{
+    UIImage *aImage = [self snapShotWithView:view];
+    
+    UIImage *shadow = [UIImage imageNamed:@"shadow"];
+    CGRect snapRect = CGRectMake(0, 0, shadow.size.width+shadowWidth, Main_Screen_Height);
+    CGRect imageRect = CGRectMake(shadowWidth, 0, Main_Screen_Width, Main_Screen_Height);
+    
+    UIGraphicsBeginImageContextWithOptions(snapRect.size, NO, aImage.scale);
+    [shadow drawInRect:snapRect];
+    [aImage drawInRect:imageRect];
+    UIImage *snapImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return snapImage;
 }
 
 #pragma mark - 字体大小

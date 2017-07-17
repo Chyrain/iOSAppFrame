@@ -20,6 +20,7 @@
 #define TextColor RGBACOLOR(93, 95, 106, 1.0)
 
 #define ViewBGColor RGBACOLOR(255, 255, 255, .9)
+#define Self_Bar_Tint_Color RGBACOLOR(22, 22, 22, 0.8) //[UIColor blackColor]
 
 static NSString *collectCellId = @"collectionViewCellId";
 static NSString *collectHeadCellId = @"collectionHeadViewCellId";
@@ -75,7 +76,7 @@ static NSString *searchListCacheKey = @"SixHostSearchListArray";
     [super viewWillAppear:animated];
     
     self.view.backgroundColor = ViewBGColor;
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.barTintColor = Self_Bar_Tint_Color;
     self.navigationController.navigationBar.translucent = YES;
     [UIView animateWithDuration:0.35 animations:^{
         [self.navigationController.navigationBar setValue:@(0.8) forKeyPath:@"backgroundView.alpha"];

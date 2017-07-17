@@ -27,4 +27,9 @@
  */
 @property (nonatomic, copy) NSString *currentPrice;
 
+@property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UILabel *describeLabel;
+@property (nonatomic, strong) UILabel *originalPriceLabel;
+@property (nonatomic, strong) UILabel *currentPriceLabel;
+
 @end

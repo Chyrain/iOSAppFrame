@@ -14,6 +14,7 @@
 #import "ProgressAnimViewController.h"
 #import "CuteViewController.h"
 #import "FrameScaleViewController.h"
+#import "TransitionSecondViewController.h"
 
 @interface AnimationsTableViewController ()
 
@@ -46,7 +47,7 @@
 # pragma mark - set & get
 
 - (NSArray *)animsArray {
-    return @[@"Elastic Animation View", @"Cute View", @"Progress Animation View", @"Frame Scale", @"UI - 动画5",
+    return @[@"Elastic Animation View", @"Cute View", @"Progress Animation View", @"Frame Scale", @"Transition",
              @"UI - 动画6", @"UI - 动画7", @"UI - 动画8", @"UI - 动画9", @"UI - 动画10"];
 }
 
@@ -129,6 +130,11 @@
             break;
         case 3 : {
             FrameScaleViewController *frameVC = [[FrameScaleViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:frameVC animated:YES];
+        }
+            break;
+        case 4 : {
+            TransitionSecondViewController *frameVC = [TransitionSecondViewController new];
             [self.navigationController pushViewController:frameVC animated:YES];
         }
             break;
