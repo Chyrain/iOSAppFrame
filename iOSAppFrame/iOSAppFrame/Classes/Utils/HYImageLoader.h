@@ -6,6 +6,7 @@
 //  Copyright © 2017年 Chyrain. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 typedef void(^HYImageLoadCompletionBlock)(UIImage *image, NSError *error, NSString *imageURL);

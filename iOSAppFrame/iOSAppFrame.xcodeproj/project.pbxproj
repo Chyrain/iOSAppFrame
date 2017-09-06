@@ -99,6 +99,34 @@
 		599918541F14AB0A00AF3991 /* HYTransitionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918531F14AB0A00AF3991 /* HYTransitionTool.m */; };
 		599918571F14C22C00AF3991 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918561F14C22C00AF3991 /* UIViewController+BackButtonHandler.m */; };
 		59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B1546A1EFD2AE100380E05 /* LanguageManager.m */; };
+		59C47E771F3C42060018F8AC /* PlayingLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E761F3C42060018F8AC /* PlayingLineView.m */; };
+		59C47E7B1F3C4C850018F8AC /* Easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E791F3C4C850018F8AC /* Easing.c */; };
+		59C47E7E1F3C4D000018F8AC /* HYEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E7D1F3C4D000018F8AC /* HYEasing.m */; };
+		59C47E821F3C4E8E0018F8AC /* EasingAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E811F3C4E8E0018F8AC /* EasingAnimationViewController.m */; };
+		59C47E8D1F4144620018F8AC /* GCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E861F4144620018F8AC /* GCDGroup.m */; };
+		59C47E8E1F4144620018F8AC /* GCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E881F4144620018F8AC /* GCDQueue.m */; };
+		59C47E8F1F4144620018F8AC /* GCDSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E8A1F4144620018F8AC /* GCDSemaphore.m */; };
+		59C47E901F4144620018F8AC /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E8C1F4144620018F8AC /* GCDTimer.m */; };
+		59C47E931F41794C0018F8AC /* NSObject+CoderExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E921F41794C0018F8AC /* NSObject+CoderExtension.m */; };
+		59C47E9D1F4D55B70018F8AC /* XLCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E961F4D55B70018F8AC /* XLCard.m */; };
+		59C47E9E1F4D55B70018F8AC /* XLCardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E981F4D55B70018F8AC /* XLCardItem.m */; };
+		59C47E9F1F4D55B70018F8AC /* XLCardSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E9A1F4D55B70018F8AC /* XLCardSwitch.m */; };
+		59C47EA01F4D55B70018F8AC /* XLCardSwitchFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47E9C1F4D55B70018F8AC /* XLCardSwitchFlowLayout.m */; };
+		59C47EA31F4D55E80018F8AC /* CardSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47EA21F4D55E80018F8AC /* CardSwitchViewController.m */; };
+		59C47EA51F4D573B0018F8AC /* DataPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EA41F4D573B0018F8AC /* DataPropertyList.plist */; };
+		59C47EB41F4D57420018F8AC /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EA71F4D57420018F8AC /* 1.png */; };
+		59C47EB51F4D57420018F8AC /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EA81F4D57420018F8AC /* 10.png */; };
+		59C47EB61F4D57420018F8AC /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EA91F4D57420018F8AC /* 11.png */; };
+		59C47EB71F4D57420018F8AC /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAA1F4D57420018F8AC /* 12.png */; };
+		59C47EB81F4D57420018F8AC /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAB1F4D57420018F8AC /* 13.png */; };
+		59C47EB91F4D57420018F8AC /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAC1F4D57420018F8AC /* 2.png */; };
+		59C47EBA1F4D57420018F8AC /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAD1F4D57420018F8AC /* 3.png */; };
+		59C47EBB1F4D57420018F8AC /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAE1F4D57420018F8AC /* 4.png */; };
+		59C47EBC1F4D57420018F8AC /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EAF1F4D57420018F8AC /* 5.png */; };
+		59C47EBD1F4D57420018F8AC /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EB01F4D57420018F8AC /* 6.png */; };
+		59C47EBE1F4D57420018F8AC /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EB11F4D57420018F8AC /* 7.png */; };
+		59C47EBF1F4D57420018F8AC /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EB21F4D57420018F8AC /* 8.png */; };
+		59C47EC01F4D57420018F8AC /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 59C47EB31F4D57420018F8AC /* 9.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +323,49 @@
 		599918561F14C22C00AF3991 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		59B154691EFD2AE100380E05 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
 		59B1546A1EFD2AE100380E05 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
+		59C47E751F3C42060018F8AC /* PlayingLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingLineView.h; sourceTree = "<group>"; };
+		59C47E761F3C42060018F8AC /* PlayingLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingLineView.m; sourceTree = "<group>"; };
+		59C47E791F3C4C850018F8AC /* Easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Easing.c; sourceTree = "<group>"; };
+		59C47E7A1F3C4C850018F8AC /* Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easing.h; sourceTree = "<group>"; };
+		59C47E7C1F3C4D000018F8AC /* HYEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYEasing.h; sourceTree = "<group>"; };
+		59C47E7D1F3C4D000018F8AC /* HYEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYEasing.m; sourceTree = "<group>"; };
+		59C47E801F3C4E8E0018F8AC /* EasingAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasingAnimationViewController.h; sourceTree = "<group>"; };
+		59C47E811F3C4E8E0018F8AC /* EasingAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasingAnimationViewController.m; sourceTree = "<group>"; };
+		59C47E841F4144620018F8AC /* GCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCD.h; sourceTree = "<group>"; };
+		59C47E851F4144620018F8AC /* GCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDGroup.h; sourceTree = "<group>"; };
+		59C47E861F4144620018F8AC /* GCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDGroup.m; sourceTree = "<group>"; };
+		59C47E871F4144620018F8AC /* GCDQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDQueue.h; sourceTree = "<group>"; };
+		59C47E881F4144620018F8AC /* GCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDQueue.m; sourceTree = "<group>"; };
+		59C47E891F4144620018F8AC /* GCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDSemaphore.h; sourceTree = "<group>"; };
+		59C47E8A1F4144620018F8AC /* GCDSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDSemaphore.m; sourceTree = "<group>"; };
+		59C47E8B1F4144620018F8AC /* GCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
+		59C47E8C1F4144620018F8AC /* GCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDTimer.m; sourceTree = "<group>"; };
+		59C47E911F41794C0018F8AC /* NSObject+CoderExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CoderExtension.h"; sourceTree = "<group>"; };
+		59C47E921F41794C0018F8AC /* NSObject+CoderExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CoderExtension.m"; sourceTree = "<group>"; };
+		59C47E951F4D55B70018F8AC /* XLCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCard.h; sourceTree = "<group>"; };
+		59C47E961F4D55B70018F8AC /* XLCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCard.m; sourceTree = "<group>"; };
+		59C47E971F4D55B70018F8AC /* XLCardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCardItem.h; sourceTree = "<group>"; };
+		59C47E981F4D55B70018F8AC /* XLCardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCardItem.m; sourceTree = "<group>"; };
+		59C47E991F4D55B70018F8AC /* XLCardSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCardSwitch.h; sourceTree = "<group>"; };
+		59C47E9A1F4D55B70018F8AC /* XLCardSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCardSwitch.m; sourceTree = "<group>"; };
+		59C47E9B1F4D55B70018F8AC /* XLCardSwitchFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCardSwitchFlowLayout.h; sourceTree = "<group>"; };
+		59C47E9C1F4D55B70018F8AC /* XLCardSwitchFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCardSwitchFlowLayout.m; sourceTree = "<group>"; };
+		59C47EA11F4D55E80018F8AC /* CardSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSwitchViewController.h; sourceTree = "<group>"; };
+		59C47EA21F4D55E80018F8AC /* CardSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSwitchViewController.m; sourceTree = "<group>"; };
+		59C47EA41F4D573B0018F8AC /* DataPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataPropertyList.plist; sourceTree = "<group>"; };
+		59C47EA71F4D57420018F8AC /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		59C47EA81F4D57420018F8AC /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		59C47EA91F4D57420018F8AC /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		59C47EAA1F4D57420018F8AC /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		59C47EAB1F4D57420018F8AC /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		59C47EAC1F4D57420018F8AC /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		59C47EAD1F4D57420018F8AC /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		59C47EAE1F4D57420018F8AC /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		59C47EAF1F4D57420018F8AC /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		59C47EB01F4D57420018F8AC /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		59C47EB11F4D57420018F8AC /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		59C47EB21F4D57420018F8AC /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		59C47EB31F4D57420018F8AC /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		5C79F702DBC3C572CE765B7B /* Pods-iOSAppFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSAppFrame/Pods-iOSAppFrame.debug.xcconfig"; sourceTree = "<group>"; };
 		A40F6E375C08BE7C14326883 /* libPods-iOSAppFrame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSAppFrame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C7F2404739191712046FE2 /* Pods-iOSAppFrame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppFrame.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSAppFrame/Pods-iOSAppFrame.release.xcconfig"; sourceTree = "<group>"; };
@@ -381,6 +452,8 @@
 				5910962D1F034FD900958937 /* CustomBezierView.m */,
 				591096731F0A1C4700958937 /* IBDesigbableImageview.h */,
 				591096741F0A1C4700958937 /* IBDesigbableImageview.m */,
+				59C47E751F3C42060018F8AC /* PlayingLineView.h */,
+				59C47E761F3C42060018F8AC /* PlayingLineView.m */,
 			);
 			path = DIYViews;
 			sourceTree = "<group>";
@@ -464,6 +537,8 @@
 				591096861F0BF4B400958937 /* NSDate+Utils.m */,
 				591096871F0BF4B400958937 /* NSObject+CRKVO.h */,
 				591096881F0BF4B400958937 /* NSObject+CRKVO.m */,
+				59C47E911F41794C0018F8AC /* NSObject+CoderExtension.h */,
+				59C47E921F41794C0018F8AC /* NSObject+CoderExtension.m */,
 				591096891F0BF4B400958937 /* NSObject+Dictionary.h */,
 				5910968A1F0BF4B400958937 /* NSObject+Dictionary.m */,
 				5910968B1F0BF4B400958937 /* NSObject+ObjectDealloc.h */,
@@ -617,6 +692,8 @@
 		596DA2771EFCB2C200829617 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				59C47E831F4144510018F8AC /* GCD */,
+				59C47E781F3C4C480018F8AC /* Easing */,
 				591096821F0BF4B400958937 /* Category */,
 				596DA2791EFCB2C200829617 /* Others */,
 				596DA27F1EFCB57800829617 /* Utils.h */,
@@ -645,6 +722,7 @@
 		596DA27A1EFCB2C200829617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				59C47E941F4D55B70018F8AC /* XLCardSwitch */,
 				599918431F14549D00AF3991 /* PhotoView */,
 				591292301F0DFA650041CD23 /* RYCuteView */,
 				591096601F07755D00958937 /* SearchBar */,
@@ -711,6 +789,8 @@
 		596DA2AA1EFCD86A00829617 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				59C47EA61F4D57420018F8AC /* Images */,
+				59C47EA41F4D573B0018F8AC /* DataPropertyList.plist */,
 				596DA2AB1EFCD88700829617 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -796,6 +876,7 @@
 		599918211F11E1DB00AF3991 /* AnimationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				59C47E7F1F3C4D6C0018F8AC /* KeyFrame */,
 				599918251F11E1DB00AF3991 /* CuteViewDemo */,
 				5999183F1F13961800AF3991 /* Transition */,
 				599918221F11E1DB00AF3991 /* AnimationsTableViewController.h */,
@@ -803,6 +884,8 @@
 				599918241F11E1DB00AF3991 /* AnimationsTableViewController.xib */,
 				5999182C1F11E1DB00AF3991 /* ProgressAnimViewController.h */,
 				5999182D1F11E1DB00AF3991 /* ProgressAnimViewController.m */,
+				59C47EA11F4D55E80018F8AC /* CardSwitchViewController.h */,
+				59C47EA21F4D55E80018F8AC /* CardSwitchViewController.m */,
 			);
 			path = AnimationDemo;
 			sourceTree = "<group>";
@@ -852,6 +935,77 @@
 				599918481F145D9600AF3991 /* HYImageBrowser.m */,
 			);
 			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		59C47E781F3C4C480018F8AC /* Easing */ = {
+			isa = PBXGroup;
+			children = (
+				59C47E791F3C4C850018F8AC /* Easing.c */,
+				59C47E7A1F3C4C850018F8AC /* Easing.h */,
+				59C47E7C1F3C4D000018F8AC /* HYEasing.h */,
+				59C47E7D1F3C4D000018F8AC /* HYEasing.m */,
+			);
+			path = Easing;
+			sourceTree = "<group>";
+		};
+		59C47E7F1F3C4D6C0018F8AC /* KeyFrame */ = {
+			isa = PBXGroup;
+			children = (
+				59C47E801F3C4E8E0018F8AC /* EasingAnimationViewController.h */,
+				59C47E811F3C4E8E0018F8AC /* EasingAnimationViewController.m */,
+			);
+			path = KeyFrame;
+			sourceTree = "<group>";
+		};
+		59C47E831F4144510018F8AC /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				59C47E841F4144620018F8AC /* GCD.h */,
+				59C47E851F4144620018F8AC /* GCDGroup.h */,
+				59C47E861F4144620018F8AC /* GCDGroup.m */,
+				59C47E871F4144620018F8AC /* GCDQueue.h */,
+				59C47E881F4144620018F8AC /* GCDQueue.m */,
+				59C47E891F4144620018F8AC /* GCDSemaphore.h */,
+				59C47E8A1F4144620018F8AC /* GCDSemaphore.m */,
+				59C47E8B1F4144620018F8AC /* GCDTimer.h */,
+				59C47E8C1F4144620018F8AC /* GCDTimer.m */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		59C47E941F4D55B70018F8AC /* XLCardSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				59C47E951F4D55B70018F8AC /* XLCard.h */,
+				59C47E961F4D55B70018F8AC /* XLCard.m */,
+				59C47E971F4D55B70018F8AC /* XLCardItem.h */,
+				59C47E981F4D55B70018F8AC /* XLCardItem.m */,
+				59C47E991F4D55B70018F8AC /* XLCardSwitch.h */,
+				59C47E9A1F4D55B70018F8AC /* XLCardSwitch.m */,
+				59C47E9B1F4D55B70018F8AC /* XLCardSwitchFlowLayout.h */,
+				59C47E9C1F4D55B70018F8AC /* XLCardSwitchFlowLayout.m */,
+			);
+			path = XLCardSwitch;
+			sourceTree = "<group>";
+		};
+		59C47EA61F4D57420018F8AC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				59C47EA71F4D57420018F8AC /* 1.png */,
+				59C47EA81F4D57420018F8AC /* 10.png */,
+				59C47EA91F4D57420018F8AC /* 11.png */,
+				59C47EAA1F4D57420018F8AC /* 12.png */,
+				59C47EAB1F4D57420018F8AC /* 13.png */,
+				59C47EAC1F4D57420018F8AC /* 2.png */,
+				59C47EAD1F4D57420018F8AC /* 3.png */,
+				59C47EAE1F4D57420018F8AC /* 4.png */,
+				59C47EAF1F4D57420018F8AC /* 5.png */,
+				59C47EB01F4D57420018F8AC /* 6.png */,
+				59C47EB11F4D57420018F8AC /* 7.png */,
+				59C47EB21F4D57420018F8AC /* 8.png */,
+				59C47EB31F4D57420018F8AC /* 9.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		7C77F4C0BF255C238CB406F3 /* Frameworks */ = {
@@ -986,13 +1140,27 @@
 				5999182F1F11E1DB00AF3991 /* AnimationsTableViewController.xib in Resources */,
 				596DA24F1EFCA3AC00829617 /* LaunchScreen.storyboard in Resources */,
 				596DA2BB1EFD05AF00829617 /* Tab0_Host.storyboard in Resources */,
+				59C47EB51F4D57420018F8AC /* 10.png in Resources */,
 				596DA2AC1EFCD88700829617 /* Localizable.strings in Resources */,
 				596DA2BC1EFD05AF00829617 /* Tab1_Attention.storyboard in Resources */,
 				596DA24C1EFCA3AC00829617 /* Assets.xcassets in Resources */,
+				59C47EBD1F4D57420018F8AC /* 6.png in Resources */,
+				59C47EBF1F4D57420018F8AC /* 8.png in Resources */,
 				596DA24A1EFCA3AC00829617 /* Main.storyboard in Resources */,
+				59C47EB71F4D57420018F8AC /* 12.png in Resources */,
+				59C47EBC1F4D57420018F8AC /* 5.png in Resources */,
+				59C47EB81F4D57420018F8AC /* 13.png in Resources */,
 				599918511F14889E00AF3991 /* TransitionSecondViewController.xib in Resources */,
+				59C47EBE1F4D57420018F8AC /* 7.png in Resources */,
+				59C47EC01F4D57420018F8AC /* 9.png in Resources */,
+				59C47EB61F4D57420018F8AC /* 11.png in Resources */,
 				596DA2BF1EFD05AF00829617 /* Tab4_MineCenter.storyboard in Resources */,
+				59C47EBB1F4D57420018F8AC /* 4.png in Resources */,
+				59C47EBA1F4D57420018F8AC /* 3.png in Resources */,
+				59C47EA51F4D573B0018F8AC /* DataPropertyList.plist in Resources */,
+				59C47EB91F4D57420018F8AC /* 2.png in Resources */,
 				596DA2BD1EFD05AF00829617 /* Tab2_Find.storyboard in Resources */,
+				59C47EB41F4D57420018F8AC /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,6 +1248,7 @@
 				591096D51F0C7BFC00958937 /* XRCarouselView.m in Sources */,
 				591096201F0265F200958937 /* XLImageViewerTooBar.m in Sources */,
 				5910969B1F0BF4B400958937 /* NSBundle+Language.m in Sources */,
+				59C47E821F3C4E8E0018F8AC /* EasingAnimationViewController.m in Sources */,
 				596DA2471EFCA3AC00829617 /* ViewController.m in Sources */,
 				5910966C1F078B4B00958937 /* HYCollectionCarouselView.m in Sources */,
 				5910960B1F02460A00958937 /* UIViewController+XLBubbleTransition.m in Sources */,
@@ -1088,13 +1257,21 @@
 				5910969E1F0BF4B400958937 /* NSObject+Dictionary.m in Sources */,
 				596DA2B41EFCFCE400829617 /* RootTabBarController.m in Sources */,
 				5999183E1F11E6BF00AF3991 /* LabExamplesTableViewController.m in Sources */,
+				59C47E8E1F4144620018F8AC /* GCDQueue.m in Sources */,
+				59C47E931F41794C0018F8AC /* NSObject+CoderExtension.m in Sources */,
 				591096691F0782D000958937 /* HostHeaderCollectionViewCell.m in Sources */,
 				5910960C1F02460A00958937 /* XLBubbleTransition.m in Sources */,
+				59C47E7B1F3C4C850018F8AC /* Easing.c in Sources */,
 				591096131F0259EC00958937 /* XLWaveProgress.m in Sources */,
 				599918421F13966B00AF3991 /* FrameScaleViewController.m in Sources */,
+				59C47E9D1F4D55B70018F8AC /* XLCard.m in Sources */,
 				591096A51F0BF4B400958937 /* UIView+HYExtension.m in Sources */,
+				59C47E7E1F3C4D000018F8AC /* HYEasing.m in Sources */,
 				596DA27E1EFCB3E200829617 /* BaseViewController.m in Sources */,
+				59C47E8D1F4144620018F8AC /* GCDGroup.m in Sources */,
+				59C47E9F1F4D55B70018F8AC /* XLCardSwitch.m in Sources */,
 				591096D21F0BF5E600958937 /* User+Extensions.m in Sources */,
+				59C47E8F1F4144620018F8AC /* GCDSemaphore.m in Sources */,
 				591096A01F0BF4B400958937 /* UIButton+Color.m in Sources */,
 				5999184C1F145E5100AF3991 /* HYImageLoader.m in Sources */,
 				591096E11F0DE97300958937 /* BaseTableViewController.m in Sources */,
@@ -1102,6 +1279,7 @@
 				596DA2C31EFD080C00829617 /* TabNavigationController.m in Sources */,
 				5910961F1F0265F200958937 /* XLImageViewerItem.m in Sources */,
 				5999181F1F11DC3400AF3991 /* HYKVO.m in Sources */,
+				59C47E771F3C42060018F8AC /* PlayingLineView.m in Sources */,
 				591096121F0259EC00958937 /* XLWave.m in Sources */,
 				59B1546B1EFD2AE100380E05 /* LanguageManager.m in Sources */,
 				596DA29A1EFCCF8100829617 /* MBProgressHUD.m in Sources */,
@@ -1115,6 +1293,7 @@
 				599918461F1454CB00AF3991 /* HYPhotoView.m in Sources */,
 				591096541F074CAE00958937 /* ImageScrollView.m in Sources */,
 				596DA2D71EFD117800829617 /* MineCenterViewController.m in Sources */,
+				59C47EA31F4D55E80018F8AC /* CardSwitchViewController.m in Sources */,
 				596DA2811EFCB57800829617 /* Utils.m in Sources */,
 				591096811F0B4B7F00958937 /* HostSearchWordsTableViewCell.m in Sources */,
 				599918321F11E1DB00AF3991 /* UIView+DegressCenter.m in Sources */,
@@ -1132,8 +1311,11 @@
 				596DA2921EFCC0E200829617 /* UIAlertView+Blocks.m in Sources */,
 				599918491F145D9600AF3991 /* HYImageBrowser.m in Sources */,
 				596DA2A61EFCD5DC00829617 /* BaseModule.m in Sources */,
+				59C47E9E1F4D55B70018F8AC /* XLCardItem.m in Sources */,
+				59C47E901F4144620018F8AC /* GCDTimer.m in Sources */,
 				596DA2CB1EFD10F300829617 /* HostViewController.m in Sources */,
 				599918501F14889E00AF3991 /* TransitionSecondViewController.m in Sources */,
+				59C47EA01F4D55B70018F8AC /* XLCardSwitchFlowLayout.m in Sources */,
 				591096A41F0BF4B400958937 /* UIView+ExtendTouchRect.m in Sources */,
 				5910969F1F0BF4B400958937 /* NSObject+ObjectDealloc.m in Sources */,
 				5910966F1F078C8600958937 /* HYCarouselViewCell.m in Sources */,

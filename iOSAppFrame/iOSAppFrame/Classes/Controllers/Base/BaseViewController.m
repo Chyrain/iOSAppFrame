@@ -51,8 +51,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     if (!hasFirstLayout) {
         hasFirstLayout = YES;
         [self onFirstLayoutSubviews];

@@ -118,11 +118,11 @@ static NSString *hostHeaderCellId = @"hostHeaderCollectionViewCell";
     CGFloat deltaY = view_HEIGHT - initialH;
     _collectionView.frame = CGRectMake(0 + deltaY/2, collectionViewY, initialW, collectionViewH);
     
-    if (deltaY > 0) {
-        [_loopView stopTimer];
-    } else {
-        [_loopView startTimer];
-    }
+//    if (deltaY > 0) {
+//        [_loopView stopTimer];
+//    } else {
+//        [_loopView startTimer];
+//    }
 }
 
 #pragma mark UICollectionViewDataSource 数据源方法

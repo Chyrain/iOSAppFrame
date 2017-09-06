@@ -15,6 +15,8 @@
 #import "CuteViewController.h"
 #import "FrameScaleViewController.h"
 #import "TransitionSecondViewController.h"
+#import "EasingAnimationViewController.h"
+#import "CardSwitchViewController.h"
 
 @interface AnimationsTableViewController ()
 
@@ -48,7 +50,7 @@
 
 - (NSArray *)animsArray {
     return @[@"Elastic Animation View", @"Cute View", @"Progress Animation View", @"Frame Scale", @"Transition",
-             @"UI - 动画6", @"UI - 动画7", @"UI - 动画8", @"UI - 动画9", @"UI - 动画10"];
+             @"Easing Animation", @"Card Switch", @"UI - 动画8", @"UI - 动画9", @"UI - 动画10"];
 }
 
 #pragma mark - Table view data source
@@ -138,7 +140,16 @@
             [self.navigationController pushViewController:frameVC animated:YES];
         }
             break;
-            
+        case 5 : {
+            EasingAnimationViewController *easingVC = [[EasingAnimationViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:easingVC animated:YES];
+        }
+            break;
+        case 6 : {
+            CardSwitchViewController *cardVC = [[CardSwitchViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:cardVC animated:YES];
+        }
+            break;
         default:
             break;
     }

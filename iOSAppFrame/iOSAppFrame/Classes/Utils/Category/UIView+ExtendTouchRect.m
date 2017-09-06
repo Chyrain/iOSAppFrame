@@ -22,7 +22,11 @@ void extTouch_Swizzle(Class c, SEL orig, SEL new) {
 @implementation UIView (ExtendTouchRect)
 
 + (void)load {
-    extTouch_Swizzle(self, @selector(pointInside:withEvent:), @selector(myPointInside:withEvent:));
+    //确保只调用一次
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        extTouch_Swizzle(self, @selector(pointInside:withEvent:), @selector(myPointInside:withEvent:));
+    });
 }
 
 - (BOOL)myPointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -36,7 +40,7 @@ void extTouch_Swizzle(Class c, SEL orig, SEL new) {
     return CGRectContainsPoint(hitFrame, point);
 }
 
-static char touchExtendInsetKey;
+static char touchExtendInsetKey; //用char 可以节省字节
 - (void)setTouchExtendInset:(UIEdgeInsets)touchExtendInset {
     objc_setAssociatedObject(self, &touchExtendInsetKey, [NSValue valueWithUIEdgeInsets:touchExtendInset],
                              OBJC_ASSOCIATION_RETAIN);

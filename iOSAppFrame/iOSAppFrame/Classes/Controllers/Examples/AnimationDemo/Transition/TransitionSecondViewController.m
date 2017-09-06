@@ -75,7 +75,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (!strongSelf) return;
         
-        [self.navigationController.navigationBar setValue:@(1.0) forKeyPath:@"backgroundView.alpha"];
+        //[self.navigationController.navigationBar setValue:@(1.0) forKeyPath:@"backgroundView.alpha"];
     } completion: ^(BOOL finished){
     }];
 }

@@ -134,6 +134,14 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
     
     [self.view addSubview:self.collectionView];
     self.collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    
+    // 不可变对象copy为不可变对象（深拷贝），mutableCopy为可变对象（深拷贝）
+    NSString *str = @"12121";
+    NSMutableString *mstr = [str mutableCopy];
+    NSString *cstr = [str copy];
+    NSLog(@"str: %@ %p mstr: %@ %p cstr: %@ %p ", str, str, mstr, mstr, cstr, cstr);
+    [mstr appendString:@"xx"];
+    NSLog(@"mstr:%@ %p", mstr, mstr);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,6 +167,11 @@ static NSString * hostHeaderIdentifier = @"hyHeaderID";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+}
+
+- (void)viewDidLayoutSubviews {
+    NSLog(@"【viewDidLayoutSubviews】self.view.frame:%@", NSStringFromCGRect(self.view.frame));
     
 }
 

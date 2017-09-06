@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = LocalStr(@"GoodsCar", @"购物车");
     
@@ -33,6 +35,13 @@
     show = 1;
     
     [self buildUI];
+    NSLog(@"【viewDidLoad】self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"【viewDidAppear】self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +49,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidLayoutSubviews {
+    NSLog(@"【viewDidLayoutSubviews】self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
+
+}
+
 - (void)onFirstLayoutSubviews {
+    NSLog(@"【onFirstLayoutSubviews】self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
     _collectionView.frame = self.view.bounds;
     NSLog(@"self.view.frame:%@ collectionView.frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(_collectionView.frame));
 }

@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, strong) NSSet *priorities;
+@property (nonatomic, strong) NSString *desc;
 
 @end

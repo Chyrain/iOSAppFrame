@@ -213,7 +213,7 @@ static NSString *searchListCacheKey = @"SixHostSearchListArray";
             hotSearchLab.backgroundColor = [UIColor clearColor];//ViewBGColor;
             hotSearchLab.textColor = [UIColor darkTextColor];
             hotSearchLab.font = [UIFont systemFontOfSize:12];
-            hotSearchLab.text = @"热搜  ";
+            hotSearchLab.text = @"热搜 ";
             hotSearchLab.textAlignment = NSTextAlignmentCenter;
             [header addSubview:hotSearchLab];
         }

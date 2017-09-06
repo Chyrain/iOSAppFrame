@@ -6,6 +6,7 @@
 //  Copyright © 2017年 Chyrain. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 // 显示封面照片的 UIImageView 的 tag.
 #define HYCoverImageViewTag 100000
