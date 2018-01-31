@@ -13,6 +13,7 @@
 #import "PlayingLineView.h"
 #import "Masonry.h"
 #import "HYEasing.h"
+#import "HYArrowView.h"
 
 //宏定义scrollview的宽高
 #define view_WIDTH self.view.frame.size.width
@@ -36,6 +37,8 @@
 
 @property (strong, nonatomic) UIView *my_GroupView;
 @property (strong, nonatomic) UIView *my_transition;
+
+@property (strong, nonatomic) HYArrowView *arrowView;
 
 @end
 
@@ -80,6 +83,9 @@
 //    NSSet *set;
 //    [set sortedArrayUsingDescriptors:nil];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"picture1"]];//图片重复平铺
+    
+    _arrowView = [[HYArrowView alloc] initWithFrame:CGRectMake(100, 50, 50, 10) lineWidth:2 lineColor:[UIColor blueColor] arrowDown:YES];
+    [self.view addSubview:_arrowView];
 }
 
 //开始点击时，让视图移动、变形装、颜色，移动的过程视图透明度为0.3
@@ -144,6 +150,8 @@
     [self animationGroup];
     
     [self animationTransition];
+    
+    [self.arrowView arrowUpWithAnimation:YES];
 }
 
 -(void)showSuccessAnimation{
@@ -159,6 +167,8 @@
 //    });
     
     [self animationPushTransition];
+    
+    [self.arrowView arrowDownWithAnimation:YES];
 }
 
 - (void)configLayer {

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+typedef NS_ENUM(NSInteger, AnimationDirection) {
+    AnimationDirectionPositive = 1,
+    AnimationDirectionNegative = -1
+};
+
 @interface FindViewController : BaseViewController
 
 @end

@@ -51,6 +51,8 @@
 		591096D51F0C7BFC00958937 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096D41F0C7BFC00958937 /* XRCarouselView.m */; };
 		591096E11F0DE97300958937 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591096E01F0DE97300958937 /* BaseTableViewController.m */; };
 		591292331F0DFA650041CD23 /* RYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 591292321F0DFA650041CD23 /* RYCuteView.m */; };
+		592A3FB71F6637FB0065F677 /* WebviewProgressLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A3FB61F6637FB0065F677 /* WebviewProgressLine.m */; };
+		592A3FBA1F66391D0065F677 /* WebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592A3FB91F66391D0065F677 /* WebviewViewController.m */; };
 		596DA2411EFCA3AC00829617 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2401EFCA3AC00829617 /* main.m */; };
 		596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2431EFCA3AC00829617 /* AppDelegate.m */; };
 		596DA2471EFCA3AC00829617 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2461EFCA3AC00829617 /* ViewController.m */; };
@@ -81,6 +83,9 @@
 		596DA2D11EFD112900829617 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D01EFD112900829617 /* FindViewController.m */; };
 		596DA2D41EFD115A00829617 /* GoodsCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D31EFD115A00829617 /* GoodsCarViewController.m */; };
 		596DA2D71EFD117800829617 /* MineCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596DA2D61EFD117800829617 /* MineCenterViewController.m */; };
+		59823DFB1F959A0D002A1915 /* BBSingleLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 59823DFA1F959A0D002A1915 /* BBSingleLinkedList.m */; };
+		59823DFE1F959B2D002A1915 /* BBLinkedMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 59823DFD1F959B2D002A1915 /* BBLinkedMap.m */; };
+		59955E9A1F6FBF23007E5B3A /* HYArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59955E991F6FBF23007E5B3A /* HYArrowView.m */; };
 		5999181F1F11DC3400AF3991 /* HYKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999181E1F11DC3400AF3991 /* HYKVO.m */; };
 		5999182E1F11E1DB00AF3991 /* AnimationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 599918231F11E1DB00AF3991 /* AnimationsTableViewController.m */; };
 		5999182F1F11E1DB00AF3991 /* AnimationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599918241F11E1DB00AF3991 /* AnimationsTableViewController.xib */; };
@@ -235,6 +240,10 @@
 		591096E01F0DE97300958937 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		591292311F0DFA650041CD23 /* RYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYCuteView.h; sourceTree = "<group>"; };
 		591292321F0DFA650041CD23 /* RYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYCuteView.m; sourceTree = "<group>"; };
+		592A3FB51F6637FB0065F677 /* WebviewProgressLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebviewProgressLine.h; sourceTree = "<group>"; };
+		592A3FB61F6637FB0065F677 /* WebviewProgressLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebviewProgressLine.m; sourceTree = "<group>"; };
+		592A3FB81F66391D0065F677 /* WebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebviewViewController.h; sourceTree = "<group>"; };
+		592A3FB91F66391D0065F677 /* WebviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebviewViewController.m; sourceTree = "<group>"; };
 		596DA23C1EFCA3AC00829617 /* iOSAppFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596DA2401EFCA3AC00829617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		596DA2421EFCA3AC00829617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -290,6 +299,12 @@
 		596DA2D51EFD117800829617 /* MineCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCenterViewController.h; sourceTree = "<group>"; };
 		596DA2D61EFD117800829617 /* MineCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCenterViewController.m; sourceTree = "<group>"; };
 		596DA2D81EFD12A800829617 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		59823DF91F959A0D002A1915 /* BBSingleLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBSingleLinkedList.h; sourceTree = "<group>"; };
+		59823DFA1F959A0D002A1915 /* BBSingleLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBSingleLinkedList.m; sourceTree = "<group>"; };
+		59823DFC1F959B2D002A1915 /* BBLinkedMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBLinkedMap.h; sourceTree = "<group>"; };
+		59823DFD1F959B2D002A1915 /* BBLinkedMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBLinkedMap.m; sourceTree = "<group>"; };
+		59955E981F6FBF23007E5B3A /* HYArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYArrowView.h; sourceTree = "<group>"; };
+		59955E991F6FBF23007E5B3A /* HYArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYArrowView.m; sourceTree = "<group>"; };
 		5999181D1F11DC3400AF3991 /* HYKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYKVO.h; sourceTree = "<group>"; };
 		5999181E1F11DC3400AF3991 /* HYKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYKVO.m; sourceTree = "<group>"; };
 		599918221F11E1DB00AF3991 /* AnimationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsTableViewController.h; sourceTree = "<group>"; };
@@ -448,6 +463,8 @@
 		5910962B1F034F9500958937 /* DIYViews */ = {
 			isa = PBXGroup;
 			children = (
+				59955E981F6FBF23007E5B3A /* HYArrowView.h */,
+				59955E991F6FBF23007E5B3A /* HYArrowView.m */,
 				5910962C1F034FD900958937 /* CustomBezierView.h */,
 				5910962D1F034FD900958937 /* CustomBezierView.m */,
 				591096731F0A1C4700958937 /* IBDesigbableImageview.h */,
@@ -715,6 +732,10 @@
 			children = (
 				59B154691EFD2AE100380E05 /* LanguageManager.h */,
 				59B1546A1EFD2AE100380E05 /* LanguageManager.m */,
+				59823DF91F959A0D002A1915 /* BBSingleLinkedList.h */,
+				59823DFA1F959A0D002A1915 /* BBSingleLinkedList.m */,
+				59823DFC1F959B2D002A1915 /* BBLinkedMap.h */,
+				59823DFD1F959B2D002A1915 /* BBLinkedMap.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -782,6 +803,8 @@
 			children = (
 				596DA2981EFCCF8100829617 /* MBProgressHUD.h */,
 				596DA2991EFCCF8100829617 /* MBProgressHUD.m */,
+				592A3FB51F6637FB0065F677 /* WebviewProgressLine.h */,
+				592A3FB61F6637FB0065F677 /* WebviewProgressLine.m */,
 			);
 			path = ProgressView;
 			sourceTree = "<group>";
@@ -886,6 +909,8 @@
 				5999182D1F11E1DB00AF3991 /* ProgressAnimViewController.m */,
 				59C47EA11F4D55E80018F8AC /* CardSwitchViewController.h */,
 				59C47EA21F4D55E80018F8AC /* CardSwitchViewController.m */,
+				592A3FB81F66391D0065F677 /* WebviewViewController.h */,
+				592A3FB91F66391D0065F677 /* WebviewViewController.m */,
 			);
 			path = AnimationDemo;
 			sourceTree = "<group>";
@@ -1233,6 +1258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59823DFB1F959A0D002A1915 /* BBSingleLinkedList.m in Sources */,
 				596DA2D41EFD115A00829617 /* GoodsCarViewController.m in Sources */,
 				596DA2901EFCC0E200829617 /* AlertController.m in Sources */,
 				591096661F07775900958937 /* HYSearchBarView.m in Sources */,
@@ -1268,9 +1294,11 @@
 				591096A51F0BF4B400958937 /* UIView+HYExtension.m in Sources */,
 				59C47E7E1F3C4D000018F8AC /* HYEasing.m in Sources */,
 				596DA27E1EFCB3E200829617 /* BaseViewController.m in Sources */,
+				592A3FBA1F66391D0065F677 /* WebviewViewController.m in Sources */,
 				59C47E8D1F4144620018F8AC /* GCDGroup.m in Sources */,
 				59C47E9F1F4D55B70018F8AC /* XLCardSwitch.m in Sources */,
 				591096D21F0BF5E600958937 /* User+Extensions.m in Sources */,
+				59955E9A1F6FBF23007E5B3A /* HYArrowView.m in Sources */,
 				59C47E8F1F4144620018F8AC /* GCDSemaphore.m in Sources */,
 				591096A01F0BF4B400958937 /* UIButton+Color.m in Sources */,
 				5999184C1F145E5100AF3991 /* HYImageLoader.m in Sources */,
@@ -1287,6 +1315,7 @@
 				596DA2441EFCA3AC00829617 /* AppDelegate.m in Sources */,
 				596DA2AF1EFCDC5D00829617 /* UserDefaultsUtils.m in Sources */,
 				591096291F033A8000958937 /* V5LoadingHUD.m in Sources */,
+				592A3FB71F6637FB0065F677 /* WebviewProgressLine.m in Sources */,
 				591096A61F0BF4B400958937 /* UIViewController+NIB.m in Sources */,
 				596DA2CE1EFD111400829617 /* AttentionViewController.m in Sources */,
 				5910965F1F07732200958937 /* HostHeaderCollectionReusableView.m in Sources */,
@@ -1294,6 +1323,7 @@
 				591096541F074CAE00958937 /* ImageScrollView.m in Sources */,
 				596DA2D71EFD117800829617 /* MineCenterViewController.m in Sources */,
 				59C47EA31F4D55E80018F8AC /* CardSwitchViewController.m in Sources */,
+				59823DFE1F959B2D002A1915 /* BBLinkedMap.m in Sources */,
 				596DA2811EFCB57800829617 /* Utils.m in Sources */,
 				591096811F0B4B7F00958937 /* HostSearchWordsTableViewCell.m in Sources */,
 				599918321F11E1DB00AF3991 /* UIView+DegressCenter.m in Sources */,

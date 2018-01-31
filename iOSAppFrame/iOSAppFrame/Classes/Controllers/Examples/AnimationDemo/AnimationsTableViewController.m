@@ -17,6 +17,7 @@
 #import "TransitionSecondViewController.h"
 #import "EasingAnimationViewController.h"
 #import "CardSwitchViewController.h"
+#import "WebviewViewController.h"
 
 @interface AnimationsTableViewController ()
 
@@ -50,7 +51,7 @@
 
 - (NSArray *)animsArray {
     return @[@"Elastic Animation View", @"Cute View", @"Progress Animation View", @"Frame Scale", @"Transition",
-             @"Easing Animation", @"Card Switch", @"UI - 动画8", @"UI - 动画9", @"UI - 动画10"];
+             @"Easing Animation", @"Card Switch", @"Webview-Progress", @"UI - 动画9", @"UI - 动画10"];
 }
 
 #pragma mark - Table view data source
@@ -148,6 +149,11 @@
         case 6 : {
             CardSwitchViewController *cardVC = [[CardSwitchViewController alloc] initWithNibName:nil bundle:nil];
             [self.navigationController pushViewController:cardVC animated:YES];
+        }
+            break;
+        case 7 : {
+            WebviewViewController *webVC = [[WebviewViewController alloc] initWithNibName:nil bundle:nil];
+            [self.navigationController pushViewController:webVC animated:YES];
         }
             break;
         default:

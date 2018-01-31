@@ -10,7 +10,7 @@ target ‘iOSAppFrame’ do
 	pod 'MJExtension'
 	pod 'AFNetworking'
 	pod 'Masonry'
-
+    pod 'NJKWebViewProgress'
 	#pod 'BEMCheckBox'
 	#pod 'UAProgressView'
 	#pod 'LGSideMenuController' 
